@@ -23,9 +23,9 @@ class App extends Component {
   componentWillMount() {
     firebase.database().ref('TestData').on('value', (snapshot) => {
       this.setState({data: [
-        {text: 'Compost', value: snapshot.child('Compost').val()},
-        {text: 'Recycling', value: snapshot.child('Recycling').val()},
-        {text: 'Trash', value: snapshot.child('Trash').val()}
+        {text: 'Compost', value: snapshot.child('Compost').numChildren()},
+        {text: 'Recycling', value: snapshot.child('Recycling').numChildren()},
+        {text: 'Trash', value: snapshot.child('Trash').numChildren()}
       ]});
     });
   }
