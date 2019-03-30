@@ -5,6 +5,7 @@ from firebase import firebase
 from google.cloud import vision
 import io
 import os
+import datetime
 
 servoPINTop = 6
 servoPINBottom = 13
@@ -13,7 +14,6 @@ GPIO.setup(servoPINTop, GPIO.OUT)
 GPIO.setup(servoPINBottom, GPIO.OUT)
 camera = PiCamera()
 firebase = firebase.FirebaseApplication('https://smartsort.firebaseio.com', None)
-
 
 t = GPIO.PWM(servoPINTop, 50)
 t.start(7.5)
@@ -59,7 +59,6 @@ def landfill():
 	t.ChangeDutyCycle(7.5)
 
 try:
-	# 7.2 is stop
 	while True:
 		camera.capture('/home/pi/Desktop/trashImages/image0.jpg')
 
@@ -70,9 +69,7 @@ try:
 
 		response = client.label_detection(image=image)
 		labels = response.label_annotations
-		itemAdded = ""
 
-		#Recycle
 		recycling = ["plastic", "paper", "metal", "aluminum", "can", "bottle", "jar", "glass", "jug", "electronic", "device", "tech", "cardboard", "floor"]
 		composting = ["veg", "fruit", "food", "grain", "bread", "coffee", "tea"]
 
@@ -84,8 +81,7 @@ try:
 					if i in label.description.lower():
 						recycle()
 						dumped = True
-						itemAdded = label.description
-						firebase.push('/TestData/Compost/', {"test":"test"})
+						firebase.patch('/TestData/Recycling/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):label.description})
 						break
 			else:
 				break
@@ -97,7 +93,7 @@ try:
 						if i in label.description.lower():
 							compost()
 							dumped = True
-							itemAdded = label.description
+							firebase.patch('/TestData/Compost/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):label.description})
 							break
 				else:
 					break
@@ -105,18 +101,16 @@ try:
 		if not dumped:
 			landfill()
 			dumped = True
-			if len(labels > 0):
+			if len(labels) > 0:
+				firebase.patch('/TestData/Trash/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):labels[0].description})
 				itemAdded = labels[0].description
+			else:
+				firebase.patch('/TestData/Trash/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):"Trash"})
 
 
-		firebase.post('/TestData/', {"test":"test"})
-		# firebase.patch('https://https://smartsort.firebaseio.com/pi/' + str(imageIndex), {imageIndex: True})
 		imageIndex += 1
 		time.sleep(2)
-
 		break
-
-
 
 except KeyboardInterrupt:
 	t.stop()
