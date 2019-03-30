@@ -31,3 +31,66 @@
     transform: rotate(360deg);
   }
 }
+
+.toolbar {
+  background-color: #554afb;
+  color: white;
+  height: 46px;
+  width: 100%;
+  padding-top: 16px;
+  padding-left: 16px;
+  font-size: 18px;
+}
+
+.content {
+  display: grid;
+  max-width: 1200px;
+  margin: 16px auto 16px;
+  padding: 0 16px;
+  grid-template-columns: auto auto auto auto;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "chart clist rlist tlist";
+}
+
+.chart {
+  grid-area: chart;
+  width: 500px;
+  max-width: 80vw;
+  height: 500px;
+}
+
+.clist {
+  grid-area: clist;
+}
+
+.rlist {
+  grid-area: rlist;
+}
+
+.tlist {
+  grid-area: tlist;
+}
+
+@media (max-width: 999px) {
+  .content {
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+            "chart clist"
+            "chart rlist"
+            "chart tlist";
+  }
+}
+
+@media (max-width: 799px) {
+  .content {
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas:
+            "chart"
+            "clist"
+            "rlist"
+            "tlist";
+  }
+}
