@@ -18,99 +18,97 @@ firebase = firebase.FirebaseApplication('https://smartsort.firebaseio.com', None
 t = GPIO.PWM(servoPINTop, 50)
 t.start(7.5)
 b = GPIO.PWM(servoPINBottom, 50)
-b.start(7.5)
-imageIndex = 0
+b.start(7.4)
 
 client = vision.ImageAnnotatorClient()
 
 def recycle():
 	t.ChangeDutyCycle(7.8)
-	b.ChangeDutyCycle(8.0)
+	b.ChangeDutyCycle(7.8)
 	time.sleep(0.3)
 	t.ChangeDutyCycle(7.5)
-	b.ChangeDutyCycle(7.5)
+	b.ChangeDutyCycle(7.4)
 	time.sleep(2)
-	t.ChangeDutyCycle(7.3)
-	b.ChangeDutyCycle(6.95)
+	t.ChangeDutyCycle(7.25)
+	b.ChangeDutyCycle(7.0)
 	time.sleep(0.4)
 	t.ChangeDutyCycle(7.5)
-	b.ChangeDutyCycle(7.5)
+	b.ChangeDutyCycle(7.4)
 
 def compost():
 	t.ChangeDutyCycle(7.9)
-	b.ChangeDutyCycle(6.75)
+	b.ChangeDutyCycle(6.6)
 	time.sleep(0.3)
 	t.ChangeDutyCycle(7.5)
-	b.ChangeDutyCycle(7.5)
+	b.ChangeDutyCycle(7.4)
 	time.sleep(2)
-	t.ChangeDutyCycle(7.3)
+	t.ChangeDutyCycle(7.2)
 	b.ChangeDutyCycle(7.8)
 	time.sleep(0.4)
 	t.ChangeDutyCycle(7.5)
-	b.ChangeDutyCycle(7.5)
+	b.ChangeDutyCycle(7.4)
 
 def landfill():
 	t.ChangeDutyCycle(7.1)
 	time.sleep(0.2)
 	t.ChangeDutyCycle(7.5)
 	time.sleep(2)
-	t.ChangeDutyCycle(7.9)
-	time.sleep(0.25)
+	t.ChangeDutyCycle(7.7)
+	time.sleep(0.3)
 	t.ChangeDutyCycle(7.5)
 
 try:
 	while True:
-		camera.capture('/home/pi/Desktop/trashImages/image0.jpg')
+		landfill()
+		# camera.capture('/home/pi/Desktop/trashImages/image0.jpg')
 
-		with io.open('/home/pi/Desktop/trashImages/image0.jpg', 'rb') as image_file:
-			content = image_file.read()
+		# with io.open('/home/pi/Desktop/trashImages/image0.jpg', 'rb') as image_file:
+		# 	content = image_file.read()
 
-		image = vision.types.Image(content=content)
+		# image = vision.types.Image(content=content)
 
-		response = client.label_detection(image=image)
-		labels = response.label_annotations
+		# response = client.label_detection(image=image)
+		# labels = response.label_annotations
 
-		recycling = ["plastic", "paper", "metal", "aluminum", "can", "bottle", "jar", "glass", "jug", "electronic", "device", "tech", "cardboard", "floor"]
-		composting = ["veg", "fruit", "food", "grain", "bread", "coffee", "tea"]
+		# recycling = ["plastic", "paper", "metal", "aluminum", "can", "bottle", "jar", "glass", "jug", "electronic", "device", "tech", "cardboard", "floor"]
+		# composting = ["veg", "fruit", "food", "grain", "bread", "coffee", "tea"]
 
-		dumped = False
-		for label in labels:
-			print(label.description)
-			if not dumped:
-				for i in recycling:
-					if i in label.description.lower():
-						recycle()
-						dumped = True
-						firebase.patch('/TestData/Recycling/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):label.description})
-						break
-			else:
-				break
+		# dumped = False
+		# for label in labels:
+		# 	print(label.description)
+		# 	if not dumped:
+		# 		for i in recycling:
+		# 			if i in label.description.lower():
+		# 				recycle()
+		# 				dumped = True
+		# 				firebase.patch('/TestData/Recycling/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):label.description})
+		# 				break
+		# 	else:
+		# 		break
 		
-		if not dumped:
-			for label in labels:
-				if not dumped:
-					for i in composting:
-						if i in label.description.lower():
-							compost()
-							dumped = True
-							firebase.patch('/TestData/Compost/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):label.description})
-							break
-				else:
-					break
+		# if not dumped:
+		# 	for label in labels:
+		# 		if not dumped:
+		# 			for i in composting:
+		# 				if i in label.description.lower():
+		# 					compost()
+		# 					dumped = True
+		# 					firebase.patch('/TestData/Compost/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):label.description})
+		# 					break
+		# 		else:
+		# 			break
 
-		if not dumped:
-			landfill()
-			dumped = True
-			if len(labels) > 0:
-				firebase.patch('/TestData/Trash/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):labels[0].description})
-				itemAdded = labels[0].description
-			else:
-				firebase.patch('/TestData/Trash/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):"Trash"})
+		# if not dumped:
+		# 	landfill()
+		# 	dumped = True
+		# 	if len(labels) > 0:
+		# 		firebase.patch('/TestData/Trash/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):labels[0].description})
+		# 		itemAdded = labels[0].description
+		# 	else:
+		# 		firebase.patch('/TestData/Trash/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):"Trash"})
 
-
-		imageIndex += 1
 		time.sleep(2)
-		break
+		# break
 
 except KeyboardInterrupt:
 	t.stop()
