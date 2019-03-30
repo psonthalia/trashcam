@@ -1,0 +1,501 @@
+{
+  "meta" : {
+    "view" : {
+      "id" : "ru4s-wz29",
+      "name" : "Recyclable Materials",
+      "averageRating" : 0,
+      "category" : "Quality of Life",
+      "createdAt" : 1552395165,
+      "description" : "34 and More is Buffalo’s public initiative to increase the city’s recycling rate—\ncurrently 23 percent—and exceed the national average. Recycling has never been\neasier, and benefits everyone. Use this guide to determine what goes in the green\ntote, what goes in the blue tote and what to drop off. Visit BuffaloRecycles.org\nand see how easy it is to reach 34 and More!",
+      "displayType" : "table",
+      "downloadCount" : 12,
+      "hideFromCatalog" : false,
+      "hideFromDataJson" : false,
+      "indexUpdatedAt" : 1552397204,
+      "licenseId" : "USGOV_WORKS",
+      "newBackend" : true,
+      "numberOfComments" : 0,
+      "oid" : 31037701,
+      "provenance" : "official",
+      "publicationAppendEnabled" : false,
+      "publicationDate" : 1552395843,
+      "publicationGroup" : 16035845,
+      "publicationStage" : "published",
+      "rowsUpdatedAt" : 1552395842,
+      "rowsUpdatedBy" : "9hs4-skgp",
+      "tableId" : 16035845,
+      "totalTimesRated" : 0,
+      "viewCount" : 44,
+      "viewLastModified" : 1552397167,
+      "viewType" : "tabular",
+      "columns" : [ {
+        "id" : -1,
+        "name" : "sid",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":sid",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "id",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":id",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "position",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":position",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "created_at",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":created_at",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "created_meta",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":created_meta",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "updated_at",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":updated_at",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "updated_meta",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":updated_meta",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "meta",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":meta",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : 399050450,
+        "name" : "Title",
+        "dataTypeName" : "text",
+        "description" : "",
+        "fieldName" : "title",
+        "position" : 2,
+        "renderTypeName" : "text",
+        "tableColumnId" : 77856366,
+        "cachedContents" : {
+          "largest" : "Yard Waste",
+          "null" : "0",
+          "top" : [ {
+            "item" : "Beer Bottles",
+            "count" : "1"
+          }, {
+            "item" : "Aerosol Spray Cans",
+            "count" : "1"
+          }, {
+            "item" : "Aerosol cans (empty)",
+            "count" : "1"
+          }, {
+            "item" : "Aerosol Cans",
+            "count" : "1"
+          }, {
+            "item" : "Appliances",
+            "count" : "1"
+          }, {
+            "item" : "Dehumidifier",
+            "count" : "1"
+          }, {
+            "item" : "DVDs",
+            "count" : "1"
+          }, {
+            "item" : "Fertilizers",
+            "count" : "1"
+          }, {
+            "item" : "Wine Bottles",
+            "count" : "1"
+          }, {
+            "item" : "Christmas Tree",
+            "count" : "1"
+          }, {
+            "item" : "Incandescent Light Bulbs",
+            "count" : "1"
+          }, {
+            "item" : "Cooking Oil",
+            "count" : "1"
+          }, {
+            "item" : "Lawn Furniture",
+            "count" : "1"
+          }, {
+            "item" : "Household Cleaners",
+            "count" : "1"
+          }, {
+            "item" : "Propane Tanks",
+            "count" : "1"
+          }, {
+            "item" : "Phonebooks",
+            "count" : "1"
+          }, {
+            "item" : "Takeout Containers",
+            "count" : "1"
+          }, {
+            "item" : "Furniture",
+            "count" : "1"
+          }, {
+            "item" : "Wrapping Paper",
+            "count" : "1"
+          }, {
+            "item" : "Fire Extinguisher/Smoke Detector",
+            "count" : "1"
+          } ],
+          "not_null" : "100",
+          "smallest" : "5-Gallon Bucket",
+          "cardinality" : "100"
+        },
+        "format" : { }
+      }, {
+        "id" : 399050451,
+        "name" : "Content",
+        "dataTypeName" : "text",
+        "description" : "",
+        "fieldName" : "content",
+        "position" : 3,
+        "renderTypeName" : "text",
+        "tableColumnId" : 77856367,
+        "cachedContents" : {
+          "largest" : "Wood Palettes",
+          "null" : "25",
+          "top" : [ {
+            "item" : "Cleaners, Cleaning Products, Cleaning Spray, Bleach, Windex, Toilet Cleaner, Clorox, Lysol, 409, Mr. Clean, Oxy Clean, Pledge, Tile Cleaner, Disinfectant Cleaner",
+            "count" : "2"
+          }, {
+            "item" : "Cardboard Rolls",
+            "count" : "2"
+          }, {
+            "item" : "unused drugs, needles",
+            "count" : "2"
+          }, {
+            "item" : "Light Bulbs, Bulbs, LED and Fluorescent Light Bulbs",
+            "count" : "2"
+          }, {
+            "item" : "Frozen Food Box, Beer Packaging, Pop Box, Soda Box, Pop Package, Fridge Packaging, Freezer Packaging, Pop Packaging, Soda Packaging, Fridge and Freezer Packaging",
+            "count" : "1"
+          }, {
+            "item" : "Paint, Oil Paint",
+            "count" : "1"
+          }, {
+            "item" : "Refrigerator, Fridge, Laundry Machine, Dryer, Washer, Microwave, Oven, Stove, Toaster, Blender, Dishwasher",
+            "count" : "1"
+          }, {
+            "item" : "bikes, bike",
+            "count" : "1"
+          }, {
+            "item" : "Blocks",
+            "count" : "1"
+          }, {
+            "item" : "Cardboard, Box, Boxes",
+            "count" : "1"
+          }, {
+            "item" : "Baking Sheet, Baking Tray, Cookie Sheet, Aluminum Tray, Aluminum Sheet",
+            "count" : "1"
+          }, {
+            "item" : "Fertilizer, Lawn Fertilizer, Scotts Fertilizer, Scotts",
+            "count" : "1"
+          }, {
+            "item" : "Bucket, White Bucket",
+            "count" : "1"
+          }, {
+            "item" : "Wine, Wine Bottle, Glass Wine Bottles, Plastic Wine Bottles",
+            "count" : "1"
+          }, {
+            "item" : "Coat Hangers, Metal Hangers, Plastic Hangers",
+            "count" : "1"
+          }, {
+            "item" : "Spray Cans, Shaving Cream Can, Spray Paint Can, Whipped Cream Can, Hair Spray Can, WD 40, Air Freshener Spray Can, Disinfectant Spray, Spray Can, Spray, Hair Spray, Pepper Spray",
+            "count" : "1"
+          }, {
+            "item" : "clothes, rags",
+            "count" : "1"
+          }, {
+            "item" : "Trash",
+            "count" : "1"
+          }, {
+            "item" : "Glass Bottle, Glass Salad Dressing Bottles",
+            "count" : "1"
+          }, {
+            "item" : "Food, Leftovers",
+            "count" : "1"
+          } ],
+          "not_null" : "75",
+          "smallest" : "Acrylics, Paint",
+          "cardinality" : "71"
+        },
+        "format" : { }
+      }, {
+        "id" : 399050452,
+        "name" : "Tote Color",
+        "dataTypeName" : "text",
+        "description" : "",
+        "fieldName" : "tote_color",
+        "position" : 4,
+        "renderTypeName" : "text",
+        "tableColumnId" : 77856368,
+        "cachedContents" : {
+          "largest" : "specialty",
+          "null" : "0",
+          "top" : [ {
+            "item" : "specialty",
+            "count" : "50"
+          }, {
+            "item" : "green",
+            "count" : "35"
+          }, {
+            "item" :
+            "count" : "15"
+          } ],
+          "not_null" : "100",
+          "smallest" :
+          "cardinality" : "3"
+        },
+        "format" : { }
+      }, {
+        "id" : 399050453,
+        "name" : "Tote Instructions",
+        "dataTypeName" : "text",
+        "description" : "",
+        "fieldName" : "tote_instructions",
+        "position" : 5,
+        "renderTypeName" : "text",
+        "tableColumnId" : 77856369,
+        "cachedContents" : {
+          "largest" : "Put this item in your Green Tote",
+          "null" : "0",
+          "top" : [ {
+            "item" : "Please see special instructions",
+            "count" : "50"
+          }, {
+            "item" : "Put this item in your Green Tote",
+            "count" : "35"
+          }, {
+            "item" :
+            "count" : "15"
+          } ],
+          "not_null" : "100",
+          "smallest" : "Please see special instructions",
+          "cardinality" : "3"
+        },
+        "format" : { }
+      }, {
+        "id" : 399050454,
+        "name" : "Set Out Time",
+        "dataTypeName" : "text",
+        "description" : "",
+        "fieldName" : "set_out_time",
+        "position" : 6,
+        "renderTypeName" : "text",
+        "tableColumnId" : 77856370,
+        "cachedContents" : {
+          "largest" : "Place your green tote out for collection no earlier than 7 p.m. the evening before, or no later than 7 a.m. on the morning of your regularly scheduled collection day.",
+          "null" : "50",
+          "top" : [ {
+            "item" : "Place your green tote out for collection no earlier than 7 p.m. the evening before, or no later than 7 a.m. on the morning of your regularly scheduled collection day.",
+            "count" : "34"
+          }, {
+            "item" :
+            "count" : "14"
+          }, {
+            "item" : "Place your garbage bin out for collection no earlier than 7 p.m. the evening before, or no later than 7 a.m. on the morning of your regularly scheduled collection day.",
+            "count" : "1"
+          }, {
+            "item" : "Place your blue tote out for collection no earlier than 7 p.m. the evening before, or no later than 7 a.m. on the morning of your regularly scheduled collection day",
+            "count" : "1"
+          } ],
+          "not_null" : "50",
+          "smallest" : "Place your blue tote out for collection no earlier than 7 p.m. the evening before, or no later than 7 a.m. on the morning of your regularly scheduled collection day",
+          "cardinality" : "4"
+        },
+        "format" : { }
+      }],
+      "grants" : [ {
+        "inherited" : false,
+        "type" : "viewer",
+        "flags" : [ "public" ]
+      } ],
+      "license" : {
+        "name" : "Public Domain U.S. Government",
+        "termsLink" : "https://www.usa.gov/government-works"
+      },
+      "metadata" : {
+        "attachments" : [ {
+          "filename" : "CoB-Web-PDF-Recycle-Material.pdf",
+          "assetId" : "5562e079-fbb3-4337-b6d7-fb9dc32d9e41",
+          "name" : "CoB-Web-PDF-Recycle-Material.pdf"
+        } ],
+        "custom_fields" : {
+          "Disclaimers" : {
+            "Legal Disclaimer" : "The use of the Open Data Buffalo website (data.buffalony.gov) for City of Buffalo, the municipal corporation, located in the state of New York, Erie County (“City of Buffalo”) shall not constitute or imply any warranty whatsoever, expressed or implied, in law or in equity, including but not limited to, any warranties in regards to the accuracy, adequacy, completeness, fitness, legality, reliability or usefulness of any data, information, products or services contained herein. The data, information, products or services contained on the Open Data Buffalo website (data.buffalony.gov) do not constitute and shall not be construed or implied, in any manner whatsoever, as containing the official records of the City of Buffalo. The City of Buffalo hereby disclaims any and all liability to any and all parties for any direct, indirect, implied, punitive, special, incidental or other consequential damages arising directly or indirectly from any use of the Open Data Buffalo website (data.buffalony.gov), including but not limited to, any and all damages arising from or related to the download, use, transmission, alteration, dissemination of data, information, products or services contained on or downloaded from the Open Data Buffalo website (data.buffalony.gov)."
+          },
+          "Civic Innovation" : {
+            "Problem Statements Related to this Dataset" : "How can this data be used to build a more sustainable Buffalo?"
+          },
+          "Dataset Information" : {
+            "Department" : "Department of Public Works",
+            "Agency" : "City of Buffalo",
+            "Data Series Start Date" : "N/A",
+            "Automated" : "No",
+            "Source System" : "N/A",
+            "Update Frequency" : "Annual",
+            "Division" : "Streets & Sanitation"
+          }
+        },
+        "rowIdentifier" : 399050449,
+        "rowLabel" : "recyclable material",
+        "availableDisplayTypes" : [ "table", "fatrow", "page" ]
+      },
+      "owner" : {
+        "id" : "9hs4-skgp",
+        "displayName" : "Dana Glantz",
+        "screenName" : "Dana Glantz",
+        "type" : "interactive",
+        "flags" : [ "mayBeStoriesCoOwner" ]
+      },
+      "query" : { },
+      "rights" : [ "read" ],
+      "tableAuthor" : {
+        "id" : "9hs4-skgp",
+        "displayName" : "Dana Glantz",
+        "screenName" : "Dana Glantz",
+        "type" : "interactive",
+        "flags" : [ "mayBeStoriesCoOwner" ]
+      },
+      "tags" : [ "recycle", "recycling", "green", "tote", "34", "civic innovation challenge", "eco challenge", "sustainability" ],
+      "flags" : [ "default", "restorable", "restorePossibleForType" ]
+    }
+  },
+  "data" : [ ["Compact Discs/CD", null]
+, ["DVDs", null, "specialty", "Please see special instructions", null, "Visit https://www.buffalony.gov/382/Streets-Sanitation for donation locations. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Cell Phones", null, "specialty", "Please see special instructions", null, "Take electronic waste to the Electronic Recycling Drop-Off location at 1120 Seneca St. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Aerosol cans (empty)", null, "green", "Put this item in your Green Tote", "Place your green tote out for collection no earlier than 7 p.m. the evening before, or no later than 7 a.m. on the morning of your regularly scheduled collection day.", "Empty and rinse bottles first. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Plastic Bottle", "Bottle, Pop Bottle, Soda Bottle", "green", "Put this item in your Green Tote", "Place your green tote out for collection no earlier than 7 p.m. the evening before, or no later than 7 a.m. on the morning of your regularly scheduled collection day.", "Put all plastic with recycling codes 1 through 7 in the green tote. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Potato Chip Bag", null, "Place your blue tote out for collection no earlier than 7 p.m. the evening before, or no later than 7 a.m. on the morning of your regularly scheduled collection day", null ]
+, ["Plastic Container", "Container, Tupperware", "green", "Put this item in your Green Tote", "Place your green tote out for collection no earlier than 7 p.m. the evening before, or no later than 7 a.m. on the morning of your regularly scheduled collection day.", "Put all plastic with recycling codes 1 through 7 in the green tote. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Plastic Tub", "Tub, Storage Tub", "green", "Put this item in your Green Tote", "Place your green tote out for collection no earlier than 7 p.m. the evening before, or no later than 7 a.m. on the morning of your regularly scheduled collection day.", "Put all plastic with recycling codes 1 through 7 in the green tote. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Plastic Lid", "Lid, Coffee Lid, Cup Top", "green", "Put this item in your Green Tote", "Place your green tote out for collection no earlier than 7 p.m. the evening before, or no later than 7 a.m. on the morning of your regularly scheduled collection day.", "Put all plastic with recycling codes 1 through 7 in the green tote. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Lawn Furniture", "Plastic Chairs, Plastic Chair, Outdoor Furniture, Patio Furniture", "green", "Put this item in your Green Tote", "Place your green tote out for collection no earlier than 7 p.m. the evening before, or no later than 7 a.m. on the morning of your regularly scheduled collection day."]
+, ["Laundry Basket", "Basket, Clothes Basket, Plastic Hamper", "green", "Put this item in your Green Tote", "Place your green tote out for collection no earlier than 7 p.m. the evening before, or no later than 7 a.m. on the morning of your regularly scheduled collection day."]
+, ["5-Gallon Bucket", "Bucket, White Bucket", "green", "Put this item in your Green Tote", "Place your green tote out for collection no earlier than 7 p.m. the evening before, or no later than 7 a.m. on the morning of your regularly scheduled collection day."]
+, ["Soda Crate", "Milk Crate, Plastic Crate", "green", "Put this item in your Green Tote", "Place your green tote out for collection no earlier than 7 p.m. the evening before, or no later than 7 a.m. on the morning of your regularly scheduled collection day."]
+, ["Garbage Can", "Garbage Bucket, Plastic Garbage Bin, Garbage Bin", "green", "Put this item in your Green Tote", "Place your garbage bin out for collection no earlier than 7 p.m. the evening before, or no later than 7 a.m. on the morning of your regularly scheduled collection day.", "Put your rinsed and emptied trash can in the green tote.  Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Glass Bottles", "Glass Bottle, Glass Salad Dressing Bottles", "green", "Put this item in your Green Tote", "Place your green tote out for collection no earlier than 7 p.m. the evening before, or no later than 7 a.m. on the morning of your regularly scheduled collection day.", "Empty and rinse bottles first. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Liquor Bottles", "Alcohol Bottles, Vodka Bottles", "green", "Put this item in your Green Tote", "Place your green tote out for collection no earlier than 7 p.m. the evening before, or no later than 7 a.m. on the morning of your regularly scheduled collection day.", "Empty and rinse bottles first. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Beer Bottles", "Beer Bottle, Beer, Beer Container", "green", "Put this item in your Green Tote", "Place your green tote out for collection no earlier than 7 p.m. the evening before, or no later than 7 a.m. on the morning of your regularly scheduled collection day.", "Empty and rinse bottles first. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Soda Bottles", "Root Beer Bottles, Glass Soda Bottles, Plastic Soda Bottles, Plastic Pop Bottles, Glass Pop Bottles", "green", "Put this item in your Green Tote", "Place your green tote out for collection no earlier than 7 p.m. the evening before, or no later than 7 a.m. on the morning of your regularly scheduled collection day.", "Empty and rinse bottles first. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Wine Bottles", "Wine, Wine Bottle, Glass Wine Bottles, Plastic Wine Bottles", "green", "Put this item in your Green Tote", "Place your green tote out for collection no earlier than 7 p.m. the evening before, or no later than 7 a.m. on the morning of your regularly scheduled collection day.", "Empty and rinse bottles first. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Glass Jars", "Glass, Jars, Pickle Jar, Jelly Jar, Mason Jar, Baby food Jar,", "green", "Put this item in your Green Tote", "Place your green tote out for collection no earlier than 7 p.m. the evening before, or no later than 7 a.m. on the morning of your regularly scheduled collection day.", "Empty and rinse jars first. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Newspaper", "News Paper, Paper, Daily Paper, News", "green", "Put this item in your Green Tote", "Place your green tote out for collection no earlier than 7 p.m. the evening before, or no later than 7 a.m. on the morning of your regularly scheduled collection day."]
+, ["Books", "Book, Hard Cover Book, Soft Cover Book, Novel, Story, Children's Books,", "green", "Put this item in your Green Tote", "Place your green tote out for collection no earlier than 7 p.m. the evening before, or no later than 7 a.m. on the morning of your regularly scheduled collection day.", "Place softcover books and hardback books (covers removed) in the green tote. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Phonebooks", "Phonebook, Telephone Book, Phone Book", "green", "Put this item in your Green Tote", "Place your green tote out for collection no earlier than 7 p.m. the evening before, or no later than 7 a.m. on the morning of your regularly scheduled collection day."]
+, ["Magazines", "Magazine, Magazine Issues, Old Magazines", "green", "Put this item in your Green Tote", "Place your green tote out for collection no earlier than 7 p.m. the evening before, or no later than 7 a.m. on the morning of your regularly scheduled collection day."]
+, ["Milk Carton", "Milk, Milk Container, Carton of Milk", "green", "Put this item in your Green Tote", "Place your green tote out for collection no earlier than 7 p.m. the evening before, or no later than 7 a.m. on the morning of your regularly scheduled collection day.", "Empty and rinse cartons first. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Juice Carton", "Juice, Juice Container, Orange Juice, Grape Juice, Apple Juice", "green", "Put this item in your Green Tote", "Place your green tote out for collection no earlier than 7 p.m. the evening before, or no later than 7 a.m. on the morning of your regularly scheduled collection day.", "Empty and rinse cartons first. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Scrap Paper", "Paper, Scrap, Notes, Junk Paper, Notepad", "green", "Put this item in your Green Tote", "Place your green tote out for collection no earlier than 7 p.m. the evening before, or no later than 7 a.m. on the morning of your regularly scheduled collection day."]
+, ["Junk Mail", "Mail, Spam, Direct Mail, Envelope", "green", "Put this item in your Green Tote", "Place your green tote out for collection no earlier than 7 p.m. the evening before, or no later than 7 a.m. on the morning of your regularly scheduled collection day."]
+, ["Paper Towel Cardboard Roll", "Cardboard Rolls", "green", "Put this item in your Green Tote", "Place your green tote out for collection no earlier than 7 p.m. the evening before, or no later than 7 a.m. on the morning of your regularly scheduled collection day."]
+, ["Toilet Paper Cardboard Roll", "Cardboard Rolls", "green", "Put this item in your Green Tote", "Place your green tote out for collection no earlier than 7 p.m. the evening before, or no later than 7 a.m. on the morning of your regularly scheduled collection day."]
+, ["Pizza Box", "Pizza, Pizza Container, Box of Pizza, Box from Pizza", "green", "Put this item in your Green Tote", "Place your green tote out for collection no earlier than 7 p.m. the evening before, or no later than 7 a.m. on the morning of your regularly scheduled collection day.", "Make sure pizza box is clean and grease-free. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Aluminum", "Baking Sheet, Baking Tray, Cookie Sheet, Aluminum Tray, Aluminum Sheet", "green", "Put this item in your Green Tote", "Place your green tote out for collection no earlier than 7 p.m. the evening before, or no later than 7 a.m. on the morning of your regularly scheduled collection day."]
+, ["Pots and Pans", "Pot and Pan, Kitchen Pots and Pans, Cooking Pots and Pans, Metal Pots, Metal Pans, Pots, Pans", "green", "Put this item in your Green Tote", "Place your green tote out for collection no earlier than 7 p.m. the evening before, or no later than 7 a.m. on the morning of your regularly scheduled collection day."]
+, ["Tins", "Tin, Tin Can", "green", "Put this item in your Green Tote", "Place your green tote out for collection no earlier than 7 p.m. the evening before, or no later than 7 a.m. on the morning of your regularly scheduled collection day.", "Empty and rinse tin first. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Utensils", "Fork, Knife, Spoon, Forks, Knifes, Spoons, Silverware", "green", "Put this item in your Green Tote", "Place your green tote out for collection no earlier than 7 p.m. the evening before, or no later than 7 a.m. on the morning of your regularly scheduled collection day."]
+, ["Steel Cans", "Steel Can, Steel and Tin Cans", "green", "Put this item in your Green Tote", "Place your green tote out for collection no earlier than 7 p.m. the evening before, or no later than 7 a.m. on the morning of your regularly scheduled collection day.", "Empty and rinse cans first. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Tin Cans", "Can, Tuna Fish Can, Tuna Can", "green", "Put this item in your Green Tote", "Place your green tote out for collection no earlier than 7 p.m. the evening before, or no later than 7 a.m. on the morning of your regularly scheduled collection day.", "Empty and rinse cans first. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Paper Coffee Cups", "Coffee Cup, To-Go Coffee Cup", "green", "Put this item in your Green Tote", "Place your green tote out for collection no earlier than 7 p.m. the evening before, or no later than 7 a.m. on the morning of your regularly scheduled collection day.", "Empty and rinse cups first. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Cardboard Boxes", "Cardboard, Box, Boxes", "green", "Put this item in your Green Tote", "Place your green tote out for collection no earlier than 7 p.m. the evening before, or no later than 7 a.m. on the morning of your regularly scheduled collection day.", "Put your flattened cardboard boxes in the green tote. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Garbage", "Trash"]
+, ["Food Waste", "Food, Leftovers"]
+, ["Takeout Containers", "Takeout"]
+, ["Wrapping Paper", "Gift Wrap, Christmas Paper, Decorative Wrap"]
+, ["Garden Hoses", "Hose, Garden Hose"]
+, ["Incandescent Light Bulbs", "Light Bulb, Bulbs"]
+, ["Latex Paint Can", "Paint Can, Paint Container"]
+, ["Wet Strength Paper", "Frozen Food Box, Beer Packaging, Pop Box, Soda Box, Pop Package, Fridge Packaging, Freezer Packaging, Pop Packaging, Soda Packaging, Fridge and Freezer Packaging"]
+, ["Paper Towels", "Paper Towel, Bounty Paper Towel, Used Paper Towel"]
+, ["Tissues", "Tissues, Kleenex, Used Tissues, Used Kleenex"]
+, ["Napkins", "Napkin, Used Napkins"]
+, ["Hangers", "Coat Hangers, Metal Hangers, Plastic Hangers", "Donate old hangers to your local dry cleaners or place them in your blue tote. Hangers can be taken to the following businesses for recycling: 1) Urban Valet at various locations. Visit www.myurbanvalet.com or call 716.885.4351 for locations and more information. 2) Corvette Cleaners at 530 Kenmore Avenue, Buffalo, NY 14261. Visit www.corvettecleaners.com or call 716.838.2211 for more information. 3) Sparkle One Hour Cleaners at 1259 Eggert Road, Buffalo, NY 14226. Call 716.836.3595 for more information. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Yard Waste", "Leaves, Branches, Sticks, Branches and Sticks", "specialty", "Please see special instructions", null, "Check the calendar below for seasonal pickup dates. Put your leaves in clear bags, and bundle your branches and sticks. Yard waste can also be dropped off at the City of Buffalo Engineering Garage at 1120 Seneca Street, Buffalo, NY 14210.  Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Christmas Tree", "Tree, Holiday Tree", "specialty", "Please see special instructions", null, "Place your Christmas tree at the curb no earlier than 7 p.m. the evening before, or no later than 7 a.m. the morning of  your weekly pickup. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Tires", "Tire, Car Tire, Car Tires,", "specialty", "Please see special instructions", null, "Drop off your tires on special collection days at the Broadway Garage, 197 Broadway St., Buffalo. Check the calendar on buffalorecycles.org for special collection dates. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Electronics", "DVD player, router, VCR, CD Player, iPod, Cell Phone, phone, Computer, Speakers, Radio, Camera, Tablet, iPad, TV, laptop, Gameboy, Video Game Player, Printer, GPS, Video Camera, Electronic Waste, Discarded Electronics, Electronic Parts, Electrical Devices", "specialty", "Please see special instructions", null, "Take electronic waste to the Electronic Recycling Drop-Off location at 1120 Seneca St. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Air Conditioners", null, "specialty", "Please see special instructions", null, "Appliances can be left on the curb as part of 2 bulk piece weekly pickup. Residents can also bring appliances to 1120 Seneca Street Monday - Friday from 8:am - 3:pm for proper disposal. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["LED Light Bulbs", "Light Bulbs, Bulbs, LED and Fluorescent Light Bulbs", "specialty", "Please see special instructions", null, "Take LED light bulbs to your local home improvement store, or to 1120 Seneca St. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Fluorescent Light Bulbs", "Light Bulbs, Bulbs, LED and Fluorescent Light Bulbs", "specialty", "Please see special instructions", null, "Take fluorescent light bulbs to your local home improvement store, or to 1120 Seneca St. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Household Hazards", "Cleaners, Cleaning Products, Cleaning Spray, Bleach, Windex, Toilet Cleaner, Clorox, Lysol, 409, Mr. Clean, Oxy Clean, Pledge, Tile Cleaner, Disinfectant Cleaner", "specialty", "Please see special instructions", null, "The City of Buffalo and Erie County hold special collection days for household hazardous waste. Check the calendar on buffalorecycles.org for special collection dates. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Household Cleaners", "Cleaners, Cleaning Products, Cleaning Spray, Bleach, Windex, Toilet Cleaner, Clorox, Lysol, 409, Mr. Clean, Oxy Clean, Pledge, Tile Cleaner, Disinfectant Cleaner", "specialty", "Please see special instructions", null, "The City of Buffalo and Erie County hold special collection days for household hazardous waste. Check the calendar on buffalorecycles.org for special collection dates. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Pesticides", "Pesticide, Roundup, Bug Killer, Weed Killer, Ant Killer, Weed B Gone", "specialty", "Please see special instructions", null, "The City of Buffalo and Erie County hold special collection days for household hazardous waste. Check the calendar on buffalorecycles.org for special collection dates. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Fertilizers", "Fertilizer, Lawn Fertilizer, Scotts Fertilizer, Scotts", "specialty", "Please see special instructions", null, "The City of Buffalo and Erie County hold special collection days for household hazardous waste. Check the calendar on buffalorecycles.org for special collection dates. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Pool Chemicals", "Pool Chemical, Water Balancers, pH decreaser, pH increaser, Chlorine, Bromine, Biguanide, Ionization, Algaecides, Shocks, Oxidizers, Clarifiers, Metal Removers, Stain and Scale Inhibitors, Cyanuric Acid, Stabilizer, Liquid Stabilizer, Poly 30, Poly 60, Algaestroy 50, Foam Chek, Filter Cleaner", "specialty", "Please see special instructions", null, "The City of Buffalo and Erie County hold special collection days for household hazardous waste. Check the calendar on buffalorecycles.org for special collection dates. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Oil Paints", "Paint, Oil Paint", "specialty", "Please see special instructions", null, "The City of Buffalo and Erie County hold special collection days for household hazardous waste. Check the calendar on buffalorecycles.org for special collection dates. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Acrylic Paints", "Acrylics, Paint", "specialty", "Please see special instructions", null, "The City of Buffalo and Erie County hold special collection days for household hazardous waste. Check the calendar on buffalorecycles.org for special collection dates. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Oil-Based Paints", null, "specialty", "Please see special instructions", null, "The City of Buffalo and Erie County hold special collection days for household hazardous waste. Check the calendar on buffalorecycles.org for special collection dates. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Acrylic-Based Paints", null, "specialty", "Please see special instructions", null, "The City of Buffalo and Erie County hold special collection days for household hazardous waste. Check the calendar on buffalorecycles.org for special collection dates. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Propane Tanks", "Propane, Grill Propane", "specialty", "Please see special instructions", null, "The City of Buffalo and Erie County hold special collection days for household hazardous waste. Check the calendar on buffalorecycles.org for special collection dates. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Batteries", "Battery, AA Batteries, AAA Batteries", "specialty", "Please see special instructions", null, "The City of Buffalo and Erie County hold special collection days for household hazardous waste. Check the calendar on buffalorecycles.org for special collection dates. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Styrofoam", "styrofoam packaging, styrofoam blocks, styrofoam sheets, styrofoam containers", "specialty", "Please see special instructions", null, "Place clean, white Styrofoam (no packing peanuts) in clear bags and contact Thermal Foams at 874.6474 to schedule a drop-off. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Paper Shredding", "Shredded paper, Shredding", "specialty", "Please see special instructions", null, "The City of Buffalo and Erie County hold special drop-off days for confidential papers and secret documents. Check the calendaron buffalorecycles.org for special collection dates. Confidential papers and secret documents can also be taken to Shred-it at 160 James E. Casey Drive, Buffalo, NY 14206. Visit www.shredit.com or call 716-626-1209 for more information. Schedule a pick up from Hanna Paper for paper shredding at 475 Ludwig Avenue, Buffalo, NY 14227. Visit www.hannapaper.com or call 716.891.9312 for more information. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Plastic Bags", "Grocery Bags, Bag, Plastic Bag, Shopping Bag, Tops Bag, Target Bag, Walmart Bag", "specialty", "Please see special instructions", null, "Bring your plastic bags to your local grocery or department store for easy drop-off. Look for drop-off bins in the front of the store. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Rechargeable Batteries", null, "specialty", "Please see special instructions", null, "The City of Buffalo and Erie County hold special collection days for household hazardous waste. Check the calendar on buffalorecycles.org for special collection dates. Buffalo residents can also drop off at 1120 Seneca Street Monday-Friday from 8:am - 3:pm.  Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Aerosol Spray Cans", "Spray Cans, Shaving Cream Can, Spray Paint Can, Whipped Cream Can, Hair Spray Can, WD 40, Air Freshener Spray Can, Disinfectant Spray, Spray Can, Spray, Hair Spray, Pepper Spray", "specialty", "Please see special instructions", null, "Empty metal aerosol cans may go into the green tote for recycling.  Full or semi-full aerosol cans should be brought to special collection days for household hazardous waste. Check the calendar on buffalorecycles.org for special collection dates. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Aerosol Cans", null, "specialty", "Please see special instructions", null, "Empty metal aerosol cans may go into the green tote for recycling.  Full or semi-full aerosol cans should be brought to special collection days for household hazardous waste. Check the calendar buffalorecycles.org for special collection dates. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Antifreeze", null, "specialty", "Please see special instructions", null, "The City of Buffalo and Erie County hold special collection days for household hazardous waste. Check the calendar buffalorecycles.org for special collection dates. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Appliances", "Refrigerator, Fridge, Laundry Machine, Dryer, Washer, Microwave, Oven, Stove, Toaster, Blender, Dishwasher", "specialty", "Please see special instructions", null, "Appliances can be left on the curb as part of 2 bulk piece weekly pickup.  Residents can also bring appliances to 1120 Seneca Street Monday - Friday from :am - 3:pm for proper disposal.  Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Automobiles", "Cars, Trucks, Car, Truck, Van", "specialty", "Please see special instructions", null, "Automobiles can be donated to the following businesses: 1) Catholic Charities of Buffalo: Children and Families at 741 Delaware Avenue, Buffalo, NY 14209.  Visit www.ccwny.com or call 716.218.1400 for more information. 2)  Habitat for Humanity at 995 Kensington Avenue, Buffalo, NY 14215. Visit www.carsforhomes.org or call 877.277.4344 for more information. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Bicycles", "bikes, bike", "specialty", "Please see special instructions", null, "Take bicycles to Go Bike Buffalo to 698 Colvin Ave Buffalo 14216. Visit www.gobikebuffalo.org or call 716-320-0193 for more information. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Building Materials", null, "specialty", "Please see special instructions", null, "Take building materials to Buffalo ReUse at 296 E. Ferry Street, Buffalo, NY 14208; Reuse Action  980 Northampton Street or Habitat Restore 501 Amherst Street.  Please call first. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Carpet/Rugs", null, "specialty", "Please see special instructions", null, "Take carpets/rugs to Triad Recycling at 3755 River Road, Tonawanda, NY 14150. A fee is involved. Visit www.triadrecycle.com or call 716.235.8822 for more information. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Clothing/Textiles", "clothes, rags", "specialty", "Please see special instructions", null, "Visit https://www.buffalony.gov/382/Streets-Sanitation for donation locations. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Cooking Oil", null, "specialty", "Please see special instructions", null, "Cooking oil can be taken to the following businesses for recycling: 1) Darling International at 2000 William Street, Buffalo, NY 14206. Visit www.darlingii.com or call 716.895.0655 for more information. 2) Buffalo Biodiesel at 225 Sawyer Avenue, Tonawanda, NY 14150 800-721-1427. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Crayons", null, "specialty", "Please see special instructions", null, "Mail them to Crazy Crayons at 16830 Edgewood Avenue, Wayzata, MN 55391. Visit www.crazycrayons.com or call 952.847.0455 for more information. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Fire Extinguisher/Smoke Detector", null, "specialty", "Please see special instructions", null, "Fire extinguishers and smoke detectors can be taken to Elwood Fire at 291 Grote Street, Buffalo, NY 14207 for recycling. Visit www.elwoodfire.com or call 716.447.0307 for more information. Call for pricing information. Fire extinguishers and smoke detectors are also collected at Household Hazardous Waste Events. Check the Erie County and City of Buffalo websites for specific dates. www.erie.gov/waste 716.858.6800. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Smoke Detector", null, "specialty", "Please see special instructions", null, "Mail smoke detectors to FIRST ALERT at 3920 Enterprise Court, Aurora, IL 60504. Mark the package \"For Disposal Only.\" Visit www.firstalert.com for more information. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Furniture", null, "specialty", "Please see special instructions", null, "Visit www.city-buffalo.com/reuse for donation locations. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Gas", null, "specialty", "Please see special instructions", null, "Take small quantities of gas to NOCO at 4361 River Road. Visit www.noco.com or call 800.500.6626 to make an appointment. Gas is also collected at Household Hazardous Waste Events. Check the Erie County and City of Buffalo websites for specific dates. www.erie.gov/waste 716.858.6800. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Ink Cartridges", "Printer Ink, Ink", "specialty", "Please see special instructions", null, "Ink cartridges can be taken to Office Max/Office Depot or Staples. Visit www.officedepot.com or www.staples.com for more information. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Medical Waste", "unused drugs, needles", "specialty", "Please see special instructions", null, "Visit www.medprodisposal.com or call 888.614.6635 for more information. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Motor Oil", "Oil, Car oil, Vehicle Oil", "specialty", "Please see special instructions", null, "Motor oil can be taken to the following businesses for recycling: 1) Walmart (various locations). Visit www.walmart.com for more information. 2) Pep Boys (various locations). Visit www.pepboys.com for more information. Motor oil is also collected at Household Hazardous Waste Events. Visit www.city-buffalo.com or erie.gov/waste or call 311 or 716.858.6800 for event dates.  Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Pallets", "Wood Palettes", "specialty", "Please see special instructions", null, "Take pallets to Buffalo Pallets at 534 Hopkins Street, Buffalo, NY 14220. Visit www.buffalopallets.com or call 716.823.2400 for more information. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Pharmaceuticals", "unused drugs, needles", "specialty", "Please see special instructions", null, "Pharmaceuticals can be taken to the following locations for disposal: 1) City Campus (Lobby) at 121 Ellicott Street, Buffalo, NY 14203. Call 716.858.2903 for more information. 2) Canisius College (Bosch Building, Lobby of Pub. Security Building) at 2001 Main Street, Buffalo, NY 14208. Call 716.888.3197 for more information. 3) Medaille College (Lobby of Public Safety Building) at 18 Agassiz Circle, Buffalo, NY 14214. Call 716.880.2237 for more information. ALL BUFFALO POLICE STATIONS ACCEPT USED PHARMACEUTICALS. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Toys", null, "specialty", "Please see special instructions", null, "Toys can be taken to the following businesses for donation: 1) Amvets Thrift Store (various locations). Visit www.amvets.org for more information. 2) Goodwill (various locations). Visit www.goodwillwny.org for more information. 3)  Salvation Army (various locations). Visit www.salvationarmyusa.org for more information. 4)  St. Vincent de Paul at various locations. Visit www.svdpwny.org/clothingcollectionbins/clothingbinlocations.html for more information. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Plastic air pillows found inside shipping packages", null, "specialty", "Please see special instructions", null, "Bring your plastic bags to your local grocery or department store for easy drop-off. Look for drop-off bins in the front of the store. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Plastic straws", null]
+, ["Concrete", "Blocks", "specialty", "Please see special instructions", null, "Take concrete to Swift River 4051 River Road 716-875-0902; Triad Recycling 3755 River Road 716-235-8822.  Call for pricing. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Dehumidifier", null, "specialty", "Please see special instructions", null, "Take electronic waste to the Electronic Recycling Drop-Off location at 1120 Seneca St. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Plastic Bubble Wrap", null, "specialty", "Please see special instructions", null, "Bring your deflated plastic wrap to your local grocery or department store for easy drop-off. Look for drop-off bins in the front of the store. Still have questions? Call 311 and we'll be happy to assist you." ]
+, ["Packing Peanuts", null, "specialty", "Please see special instructions", null, "Bring your Styrofoam packing peanuts to your local shipping store (e.g. UPS or FedEx) for drop-off. Call first! Still have questions? Call 311 and we'll be happy to assist you." ]
+ ]
+}
