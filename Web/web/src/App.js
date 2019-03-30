@@ -13,12 +13,15 @@ class App extends Component {
     super();
     this.state = {
       data: [
-        {text: 'Compost', value: 500},
-        {text: 'Recycling', value: 300},
-        {text: 'Trash', value: 800}
+        {text: 'Compost', value: 0},
+        {text: 'Recycling', value: 0},
+        {text: 'Trash', value: 0}
       ],
-      snapshot: {},
-      filter: ""
+      snapshot: {
+        Compost:{},
+        Recycling: {},
+        Trash: {}
+      }
     }
   }
 
@@ -37,12 +40,6 @@ class App extends Component {
 
   render() {
 
-    const allItems = {
-      ...this.state.snapshot.Compost,
-      ...this.state.snapshot.Recycling,
-      ...this.state.snapshot.Trash
-    };
-
     return (
       <div>
         <div className="toolbar">
@@ -60,10 +57,37 @@ class App extends Component {
           />
           </div>
 
-          <div className="list">
+          <div className="clist">
+            <h5>Compost</h5>
             <ul>
               {
-                Object.values(allItems).map(item =>
+                Object.values(this.state.snapshot.Compost).map(item =>
+                    <li key={item}>
+                      {item}
+                    </li>
+                )
+              }
+            </ul>
+          </div>
+
+          <div className="rlist">
+            <h5>Recycling</h5>
+            <ul>
+              {
+                Object.values(this.state.snapshot.Recycling).map(item =>
+                    <li key={item}>
+                      {item}
+                    </li>
+                )
+              }
+            </ul>
+          </div>
+
+          <div className="tlist">
+            <h5>Trash</h5>
+            <ul>
+              {
+                Object.values(this.state.snapshot.Trash).map(item =>
                     <li key={item}>
                       {item}
                     </li>
