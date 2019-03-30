@@ -55,6 +55,9 @@
 
 .chart {
   grid-area: chart;
+  width: 500px;
+  max-width: 80vw;
+  height: 500px;
 }
 
 .clist {

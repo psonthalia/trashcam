@@ -4,7 +4,7 @@ import './App.css';
 
 import firebase from "./firebase.js";
 
-import BarChart from 'react-bar-chart';
+import {ResponsiveContainer, BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Bar} from 'recharts';
 
 const margin = {top: 20, right: 20, bottom: 30, left: 40};
 
@@ -13,9 +13,7 @@ class App extends Component {
     super();
     this.state = {
       data: [
-        {text: 'Compost', value: 0},
-        {text: 'Recycling', value: 0},
-        {text: 'Trash', value: 0}
+        {name: 'Bins', Trash: 0, Recycling: 0, Compost: 0}
       ],
       snapshot: {
         Compost:{},
@@ -36,9 +34,10 @@ class App extends Component {
     firebase.database().ref('TestData').on('value', (snapshot) => {
       this.setState({
         data: [
-          {text: 'Compost', value: snapshot.child('Compost').numChildren()},
-          {text: 'Recycling', value: snapshot.child('Recycling').numChildren()},
-          {text: 'Trash', value: snapshot.child('Trash').numChildren()}
+          {name: 'Bins',
+            Compost: snapshot.child('Compost').numChildren(),
+          Recycling: snapshot.child('Recycling').numChildren(),
+          Trash: snapshot.child('Trash').numChildren()}
         ],
         snapshot: snapshot.val()
       });
@@ -56,12 +55,18 @@ class App extends Component {
         <div className="content">
 
           <div className="chart">
-          <BarChart yLabel='Quantity'
-            width={Math.min(500, this.state.width - 50)}
-            height={Math.min(500, this.state.width - 50)}
-            margin={margin}
-            data={this.state.data}
-          />
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={this.state.data}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="name" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Bar dataKey="Trash" fill="#000000" />
+                <Bar dataKey="Recycling" fill="#82ca9d" />
+                <Bar dataKey="Compost" fill="#8884d8" />
+              </BarChart>
+            </ResponsiveContainer>
           </div>
 
           <div className="clist">
