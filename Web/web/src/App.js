@@ -21,11 +21,18 @@ class App extends Component {
         Compost:{},
         Recycling: {},
         Trash: {}
-      }
+      },
+      width: 500
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
+    //initial width
+    this.setState({width: this.refs.root.offsetWidth});
+    window.onresize = () => {
+      this.setState({width: this.refs.root.offsetWidth});
+    };
+
     firebase.database().ref('TestData').on('value', (snapshot) => {
       this.setState({
         data: [
@@ -41,7 +48,7 @@ class App extends Component {
   render() {
 
     return (
-      <div>
+      <div ref="root">
         <div className="toolbar">
           Smart Sort
         </div>
@@ -50,8 +57,8 @@ class App extends Component {
 
           <div className="chart">
           <BarChart yLabel='Quantity'
-            width={500}
-            height={500}
+            width={Math.min(500, this.state.width - 50)}
+            height={Math.min(500, this.state.width - 50)}
             margin={margin}
             data={this.state.data}
           />
