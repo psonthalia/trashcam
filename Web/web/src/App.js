@@ -17,28 +17,62 @@ class App extends Component {
         {text: 'Recycling', value: 300},
         {text: 'Trash', value: 800}
       ],
+      snapshot: {},
+      filter: ""
     }
   }
 
   componentWillMount() {
     firebase.database().ref('TestData').on('value', (snapshot) => {
-      this.setState({data: [
-        {text: 'Compost', value: snapshot.child('Compost').numChildren()},
-        {text: 'Recycling', value: snapshot.child('Recycling').numChildren()},
-        {text: 'Trash', value: snapshot.child('Trash').numChildren()}
-      ]});
+      this.setState({
+        data: [
+          {text: 'Compost', value: snapshot.child('Compost').numChildren()},
+          {text: 'Recycling', value: snapshot.child('Recycling').numChildren()},
+          {text: 'Trash', value: snapshot.child('Trash').numChildren()}
+        ],
+        snapshot: snapshot.val()
+      });
     });
   }
 
   render() {
+
+    const allItems = {
+      ...this.state.snapshot.Compost,
+      ...this.state.snapshot.Recycling,
+      ...this.state.snapshot.Trash
+    };
+
     return (
       <div>
-        <BarChart yLabel='Quantity'
-          width={500}
-          height={500}
-          margin={margin}
-          data={this.state.data}
-        />
+        <div className="toolbar">
+          Smart Sort
+        </div>
+
+        <div className="content">
+
+          <div className="chart">
+          <BarChart yLabel='Quantity'
+            width={500}
+            height={500}
+            margin={margin}
+            data={this.state.data}
+          />
+          </div>
+
+          <div className="list">
+            <ul>
+              {
+                Object.values(allItems).map(item =>
+                    <li key={item}>
+                      {item}
+                    </li>
+                )
+              }
+            </ul>
+          </div>
+
+        </div>
       </div>
     );
   }

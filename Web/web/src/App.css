@@ -31,3 +31,29 @@
     transform: rotate(360deg);
   }
 }
+
+.toolbar {
+  background-color: #554afb;
+  color: white;
+  height: 46px;
+  width: 100%;
+  padding-top: 16px;
+  padding-left: 16px;
+  font-size: 18px;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "chart list";
+}
+
+.chart {
+  grid-area: chart;
+}
+
+.list {
+  grid-area: list;
+}
