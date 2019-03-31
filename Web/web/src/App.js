@@ -104,7 +104,7 @@ class App extends Component {
     return (
       <div ref="root">
         <div className="toolbar">
-          <div className="title">Smart Sort</div>
+          <div className="title">Trash Cam</div>
           <select className="selectTime" value={this.state.timeSpan} onChange={this.getTimespan}>
             <option value='Past Day'>Past Day</option>
             <option value='Past Week'>Past Week</option>

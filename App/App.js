@@ -141,7 +141,7 @@ export default class App extends Component {
         <Header>
           <Left/>
           <Body>
-            <Title>Smart Sort</Title>
+            <Title>Trash Cam</Title>
           </Body>
           <Right>
             {this.state.user ? (<Button transparent onPress={this.onSignoutPressed}>
