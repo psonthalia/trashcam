@@ -5,13 +5,13 @@ import { Constants } from 'expo';
 import User from './User.js'
 import { Container, Button, Text, Header, Left, Body, Right, Title, Form, Input, Item, Icon} from 'native-base';
 
-import { Font } from 'expo';
+import { Font, Linking } from 'expo';
 
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.unsubscriber = null;
-    this.state = {user: null, inputEmail: '', inputPassword: '', isReady: false};
+    this.state = {user: null, inputEmail: '', inputPassword: '', isReady: false, scanInitial: false};
   }
 
   login = () => {
@@ -80,6 +80,14 @@ export default class App extends Component {
       } else {
         this.setState({user: null});
       }
+
+      Linking.getInitialURL().then((url) => {
+        let { path, queryParams } = Expo.Linking.parse(url);
+        //alert(JSON.stringify(queryParams))
+        if(Object.keys(queryParams).length != 0){
+          this.setState({scanInitial: true})
+        }
+      })
     });
   }
 
@@ -96,7 +104,7 @@ export default class App extends Component {
   render() { 
     let view;
     if(this.state.user){
-      view = <User user={this.state.user}/>
+      view = <User user={this.state.user} scanInitial={this.state.scanInitial}/>
     }else{
       view = (
       <View style={styles.container}>

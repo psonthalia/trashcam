@@ -8,10 +8,7 @@ import { BarCodeScanner, Permissions } from 'expo';
 import AssetExample from './components/AssetExample';
 
 // or any pure javascript modules available in npm
-import { Card } from 'react-native-paper';
-import {
-  BarChart
-} from 'react-native-chart-kit'
+import BarChart from './components/BarChart'
 
 import { Dimensions } from 'react-native';
 import firebase from "./firebase.js";
@@ -36,6 +33,13 @@ export default class User extends React.Component {
     hasCameraPermission: null
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if(!prevProps.scanInitial && this.props.scanInitial){
+      alert("Scanned!")
+      this.handleBarCodeScanned();
+    }
+  }
+
   async componentDidMount() {
     firebase.database().ref(this.props.user.uid).on('value', (snapshot) => {
       const numTrash = snapshot.child('Trash').numChildren()
@@ -57,6 +61,8 @@ export default class User extends React.Component {
       });
     });
 
+    
+
     const { status } = await Permissions.askAsync(Permissions.CAMERA);
     this.setState({ hasCameraPermission: status === 'granted' });
   }
@@ -68,6 +74,20 @@ export default class User extends React.Component {
   handleBarCodeScanned = () => {
     // TODO: check bar code
     firebase.database().ref('inProgress').set({status: 1, user: this.props.user.uid})
+    this.unsub = firebase.database().ref("inProgress").on('value', (snapshot) => {
+      try{
+        let val = snapshot.val();
+        if(val.status === 0){
+          const label = val.imageTag
+          let points = label === "Recycling" ? "5" : (label === "Compost" ? 2 : 1)
+          alert(`Recognized item: ${val.imageLabel}, which goes in ${val.imageTag}. You earned ${points} points!`)
+          if(this.unsub)
+            this.unsub();
+        }
+      }catch(e){
+        //ignore
+      }
+    });
     this.setState({scanning: false})
   }
 
