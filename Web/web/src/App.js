@@ -17,6 +17,11 @@ class App extends Component {
         Recycling: {},
         Trash: {}
       },
+      snapshotFiltered: {
+        Compost:{},
+        Recycling: {},
+        Trash: {}
+      },
       width: 500,
       timeSpan: 'All Time',
     }
@@ -40,16 +45,18 @@ class App extends Component {
   }
 
   getTimespan(event, snapshot) {
-    snapshot = snapshot ? snapshot : this.state.snapshot
-    let timeSpan = event ? event.target.value : this.state.timeSpan
+    snapshot = snapshot ? snapshot : this.state.snapshot;
+    let timeSpan = event ? event.target.value : this.state.timeSpan;
     var trash = 0;
     var recycling = 0;
     var compost = 0;
+    let snapshotFiltered = {Recycling: {}, Trash: {}, Compost: {}};
 
     if (timeSpan === "All Time") {
       trash = Object.keys(snapshot.Trash).length;
       recycling = Object.keys(snapshot.Recycling).length;
       compost = Object.keys(snapshot.Compost).length;
+      snapshotFiltered = snapshot;
     } else {
       let threshold;
       if (timeSpan === "Past Week") {
@@ -60,18 +67,21 @@ class App extends Component {
       for (const key of Object.keys(snapshot.Trash)) {
         const date = new Date(key);
         if (Date.now() - date.getTime() < threshold) {
+          snapshotFiltered.Trash[key] = snapshot.Trash[key];
           trash++;
         }
       }
       for (const key of Object.keys(snapshot.Recycling)) {
         const date = new Date(key);
         if (Date.now() - date.getTime() < threshold) {
+          snapshotFiltered.Recycling[key] = snapshot.Recycling[key];
           recycling++;
         }
       }
       for (const key of Object.keys(snapshot.Compost)) {
         const date = new Date(key);
         if (Date.now() - date.getTime() < threshold) {
+          snapshotFiltered.Compost[key] = snapshot.Compost[key];
           compost++;
         }
       }
@@ -82,7 +92,8 @@ class App extends Component {
       timeSpan: timeSpan,
       data: [
         {name: 'Bins', Trash: trash, Recycling: recycling, Compost: compost}
-      ]
+      ],
+      snapshotFiltered: snapshotFiltered
     });
   }
 
@@ -122,7 +133,7 @@ class App extends Component {
             <h5>Compost</h5>
             <ul>
               {
-                Object.values(this.state.snapshot.Compost).map(item =>
+                Object.values(this.state.snapshotFiltered.Compost).map(item =>
                     <li key={item}>
                       {item}
                     </li>
@@ -135,7 +146,7 @@ class App extends Component {
             <h5>Recycling</h5>
             <ul>
               {
-                Object.values(this.state.snapshot.Recycling).map(item =>
+                Object.values(this.state.snapshotFiltered.Recycling).map(item =>
                     <li key={item}>
                       {item}
                     </li>
@@ -148,7 +159,7 @@ class App extends Component {
             <h5>Trash</h5>
             <ul>
               {
-                Object.values(this.state.snapshot.Trash).map(item =>
+                Object.values(this.state.snapshotFiltered.Trash).map(item =>
                     <li key={item}>
                       {item}
                     </li>

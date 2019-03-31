@@ -27,6 +27,10 @@
     "androidStatusBar": {
       "barStyle": "light-content",
       "backgroundColor": "#000000"
-    }
+    },
+    "platforms": [
+      "android",
+      "ios"
+    ]
   }
 }
