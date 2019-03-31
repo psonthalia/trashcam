@@ -46,6 +46,15 @@
   grid-template-areas: "title selectTime";
 }
 
+.title {
+  margin-top: 3px;
+}
+
+.selectTime {
+  margin-right: 100px;
+  margin-top: 5px;
+}
+
 .content {
   display: grid;
   max-width: 1200px;
