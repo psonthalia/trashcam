@@ -3,6 +3,7 @@ import { View, StyleSheet } from 'react-native';
 import { Container, Button, Text, Header, Left, Body, Right, Title, Form, Input, Item } from 'native-base';
 import { Constants } from 'expo';
 import { BarCodeScanner, Permissions } from 'expo';
+import Redeem from './redeem.js';
 
 // You can import from local files
 import AssetExample from './components/AssetExample';
@@ -33,7 +34,8 @@ export default class User extends React.Component {
       Trash: {}
     },
     scanning: false,
-    hasCameraPermission: null
+    hasCameraPermission: null,
+    redeeming: false
   }
 
   async componentDidMount() {
@@ -65,6 +67,10 @@ export default class User extends React.Component {
     this.setState({scanning: true})
   }
 
+  onRedeemPress = () => {
+    this.setState({redeeming: true})
+  }
+
   handleBarCodeScanned = () => {
     // TODO: check bar code
     firebase.database().ref('inProgress').set({status: 1, user: this.props.user.uid})
@@ -89,34 +95,41 @@ export default class User extends React.Component {
       strokeWidth: 2, // optional, default 3,
       decimalPlaces: 0
     };
-    return (
-      <View style={styles.container}>
-        {this.state.scanning ? (
-          hasCameraPermission == null ? <Text>Requesting camera permission</Text> : (
-            hasCameraPermission == false ? <Text>No access to camera</Text> : (
-              <BarCodeScanner
+    let view;
+    if (this.state.scanning) {
+      if (hasCameraPermission == null) {
+        view = <Text>Requesting camera permission</Text>
+      } else if (hasCameraPermission == false) {
+        view = <Text>No access to camera</Text>
+      } else {
+        view = <BarCodeScanner
                 onBarCodeScanned={this.handleBarCodeScanned}
                 style={StyleSheet.absoluteFill}
               />
-            )
-          )
-        ): (
-        <View>
-          <BarChart
-            style={{ marginVertical: 8, borderRadius: 16}}
-            data={this.state.data}
-            width={screenWidth-16}
-            height={220}
-            yAxisLabel={''}
-            chartConfig={chartConfig}
-          />
-          <Button style={styles.scanButton} onPress={this.onScanPress}><Text>Scan QR Code</Text></Button>
-          <Text style={styles.points}>
-            {this.state.points} points
-          </Text>
-        </View>)
       }
-        
+    } else if (this.state.redeeming) {
+      view = <Redeem />
+    } else {
+      view = <View>
+              <BarChart
+                style={{ marginVertical: 8, borderRadius: 16}}
+                data={this.state.data}
+                width={screenWidth-16}
+                height={220}
+                yAxisLabel={''}
+                chartConfig={chartConfig}
+              />
+              <Button style={styles.scanButton} onPress={this.onScanPress}><Text>Scan QR Code</Text></Button>
+              <Text style={styles.points}>
+                {this.state.points} points
+              </Text>
+              <Button style={styles.redeemButton} onPress={this.onRedeemPress}><Text>Redeem</Text></Button>
+            </View>
+    }
+
+    return (
+      <View style={styles.container}>
+        {view}
       </View>
     );
   }
@@ -140,6 +153,9 @@ const styles = StyleSheet.create({
     fontSize: 24
   },
   scanButton: {
+    alignSelf: 'center'
+  },
+  redeemButton: {
     alignSelf: 'center'
   }
 });
