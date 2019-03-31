@@ -13,7 +13,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(servoPINTop, GPIO.OUT)
 GPIO.setup(servoPINBottom, GPIO.OUT)
 camera = PiCamera()
-firebase = firebase.FirebaseApplication('https://smartsort.firebaseio.com', None)
+# firebase = firebase.FirebaseApplication('https://smartsort.firebaseio.com', None)
 
 t = GPIO.PWM(servoPINTop, 50)
 t.start(0)
@@ -23,15 +23,15 @@ b.start(0)
 client = vision.ImageAnnotatorClient()
 
 def recycle():
-	t.ChangeDutyCycle(7.8)
-	b.ChangeDutyCycle(7.8)
+	t.ChangeDutyCycle(7.71)
+	b.ChangeDutyCycle(8.0)
 	time.sleep(0.3)
 	t.ChangeDutyCycle(0)
 	b.ChangeDutyCycle(0)
 	time.sleep(2)
-	t.ChangeDutyCycle(7.25)
+	t.ChangeDutyCycle(7.14)
 	b.ChangeDutyCycle(7.0)
-	time.sleep(0.4)
+	time.sleep(0.3)
 	t.ChangeDutyCycle(0)
 	b.ChangeDutyCycle(0)
 
@@ -59,70 +59,73 @@ def landfill():
 
 try:
 	while True:
-		result = firebase.get('/inProgress', None)
-		if result["status"] == 1:
-			user = result["user"]
+		recycle()
+		GPIO.cleanup()
 
-			camera.capture('/home/pi/Desktop/trashImages/image0.jpg')
+		# result = firebase.get('/inProgress', None)
+		# if result["status"] == 1:
+		# 	user = result["user"]
 
-			with io.open('/home/pi/Desktop/trashImages/image0.jpg', 'rb') as image_file:
-				content = image_file.read()
+		# 	camera.capture('/home/pi/Desktop/trashImages/image0.jpg')
 
-			image = vision.types.Image(content=content)
+		# 	with io.open('/home/pi/Desktop/trashImages/image0.jpg', 'rb') as image_file:
+		# 		content = image_file.read()
 
-			response = client.label_detection(image=image)
-			labels = response.label_annotations
-			imageLabel = ""
-			imageTag = ""
+		# 	image = vision.types.Image(content=content)
 
-			recycling = ["plastic", "paper", "metal", "aluminum", "can", "bottle", "jar", "glass", "jug", "electronic", "device", "tech", "cardboard", "floor"]
-			composting = ["veg", "fruit", "food", "grain", "bread", "coffee", "tea", "plant", "chili", "pepper", "flower"]
+		# 	response = client.label_detection(image=image)
+		# 	labels = response.label_annotations
+		# 	imageLabel = ""
+		# 	imageTag = ""
 
-			dumped = False
-			for label in labels:
-				print(label.description)
-				if not dumped:
-					for i in recycling:
-						if i in label.description.lower():
-							recycle()
-							dumped = True
-							firebase.patch('/' + user + '/Recycling/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):labels[0].description})
-							firebase.patch('/TestData/Recycling/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):labels[0].description})
-							imageLabel = labels[0].description
-							imageTag = "Recycling"
-							break
-				else:
-					break
+		# 	recycling = ["plastic", "paper", "metal", "aluminum", "can", "bottle", "jar", "glass", "jug", "electronic", "device", "tech", "cardboard", "floor"]
+		# 	composting = ["veg", "fruit", "food", "grain", "bread", "coffee", "tea", "plant", "chili", "pepper", "flower"]
+
+		# 	dumped = False
+		# 	for label in labels:
+		# 		print(label.description)
+		# 		if not dumped:
+		# 			for i in recycling:
+		# 				if i in label.description.lower():
+		# 					recycle()
+		# 					dumped = True
+		# 					firebase.patch('/' + user + '/Recycling/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):labels[0].description})
+		# 					firebase.patch('/TestData/Recycling/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):labels[0].description})
+		# 					imageLabel = labels[0].description
+		# 					imageTag = "Recycling"
+		# 					break
+		# 		else:
+		# 			break
 			
-			if not dumped:
-				for label in labels:
-					if not dumped:
-						for i in composting:
-							if i in label.description.lower():
-								compost()
-								dumped = True
-								firebase.patch('/' + user + '/Compost/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):labels[0].description})
-								firebase.patch('/TestData/Compost/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):labels[0].description})
-								imageLabel = labels[0].description
-								imageTag = "Compost"
-								break
-					else:
-						break
+		# 	if not dumped:
+		# 		for label in labels:
+		# 			if not dumped:
+		# 				for i in composting:
+		# 					if i in label.description.lower():
+		# 						compost()
+		# 						dumped = True
+		# 						firebase.patch('/' + user + '/Compost/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):labels[0].description})
+		# 						firebase.patch('/TestData/Compost/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):labels[0].description})
+		# 						imageLabel = labels[0].description
+		# 						imageTag = "Compost"
+		# 						break
+		# 			else:
+		# 				break
 
-			if not dumped:
-				landfill()
-				dumped = True
-				imageTag = "Trash"
-				if len(labels) > 0:
-					firebase.patch('/' + user + '/Trash/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):labels[0].description})
-					firebase.patch('/TestData/Trash/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):labels[0].description})
-					imageLabel = labels[0].description
-				else:
-					firebase.patch('/' + user + '/Trash/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):"Trash"})
-					firebase.patch('/TestData/Trash/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):"Trash"})
-					imageLabel = "Trash"
+		# 	if not dumped:
+		# 		landfill()
+		# 		dumped = True
+		# 		imageTag = "Trash"
+		# 		if len(labels) > 0:
+		# 			firebase.patch('/' + user + '/Trash/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):labels[0].description})
+		# 			firebase.patch('/TestData/Trash/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):labels[0].description})
+		# 			imageLabel = labels[0].description
+		# 		else:
+		# 			firebase.patch('/' + user + '/Trash/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):"Trash"})
+		# 			firebase.patch('/TestData/Trash/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):"Trash"})
+		# 			imageLabel = "Trash"
 
-			firebase.patch("/inProgress/", {"status": 0, "imageLabel":imageLabel, "imageTag":imageTag})
+		# 	firebase.patch("/inProgress/", {"status": 0, "imageLabel":imageLabel, "imageTag":imageTag})
 
 		time.sleep(2)
 
