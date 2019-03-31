@@ -85,6 +85,7 @@ try:
 							recycle()
 							dumped = True
 							firebase.patch('/' + user + '/Recycling/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):label.description})
+							firebase.patch('/TestData/Recycling/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):label.description})
 							break
 				else:
 					break
@@ -97,6 +98,7 @@ try:
 								compost()
 								dumped = True
 								firebase.patch('/' + user + '/Compost/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):label.description})
+								firebase.patch('/TestData/Compost/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):label.description})
 								break
 					else:
 						break
@@ -106,9 +108,11 @@ try:
 				dumped = True
 				if len(labels) > 0:
 					firebase.patch('/' + user + '/Trash/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):labels[0].description})
+					firebase.patch('/TestData/Trash/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):labels[0].description})
 					itemAdded = labels[0].description
 				else:
 					firebase.patch('/' + user + '/Trash/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):"Trash"})
+					firebase.patch('/TestData/Trash/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):"Trash"})
 
 			firebase.patch("/inProgress/", {"status": 0})
 
