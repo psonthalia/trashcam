@@ -1,14 +1,10 @@
 import * as React from 'react';
-import { ScrollView, View, StyleSheet } from 'react-native';
-import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right } from 'native-base';
+import { ScrollView, StyleSheet } from 'react-native';
+import { Card, CardItem, Text, Button, Left, Body, Right } from 'native-base';
 import { Dimensions } from 'react-native';
 import { Image } from 'react-native';
 
 export default class Redeem extends React.Component {
-  state = {
-
-  }
-
   render() {
     return (
         <ScrollView style={styles.card}>
