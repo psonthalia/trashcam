@@ -1,39 +1,42 @@
 import firebase from './firebase.js';
 import React, { Component } from 'react';
-import { TextInput, View, Button, Alert, StyleSheet } from 'react-native';
+import { TextInput, View, Alert, StyleSheet } from 'react-native';
 import { Constants } from 'expo';
 import User from './User.js'
+import { Container, Button, Text, Header, Left, Body, Right, Title, Form, Input, Item, Icon} from 'native-base';
+
+import { Font } from 'expo';
 
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.unsubscriber = null;
-    this.state = {email: '', password:'', user: null, inputEmail: '', inputPassword: ''};
+    this.state = {user: null, inputEmail: '', inputPassword: '', isReady: false};
   }
 
   login = () => {
-          var email = this.state.inputEmail;
-        var password = this.state.inputPassword;
-        if (email.length < 4) {
-          alert('Please enter an email address.');
-          return;
-        }
-        if (password.length < 4) {
-          alert('Please enter a password.');
-          return;
-        }
-        // Sign in with email and pass.
-        firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-          // Handle Errors here.
-          var errorCode = error.code;
-          var errorMessage = error.message;
-          if (errorCode === 'auth/wrong-password') {
-            alert('Wrong password.');
-          } else {
-            alert(errorMessage);
-          }
-          console.log(error);
-        });
+    var email = this.state.inputEmail;
+    var password = this.state.inputPassword;
+    if (email.length < 4) {
+      alert('Please enter an email address.');
+      return;
+    }
+    if (password.length < 4) {
+      alert('Please enter a password.');
+      return;
+    }
+    // Sign in with email and pass.
+    firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      if (errorCode === 'auth/wrong-password') {
+        alert('Wrong password.');
+      } else {
+        alert(errorMessage);
+      }
+      console.log(error);
+    });
   }
 
   signUp = () => {
@@ -61,15 +64,23 @@ export default class App extends Component {
       });
   }
 
-  componentDidMount(){
-      this.unsubscriber = firebase.auth().onAuthStateChanged((user) => {
-        if(user) {
-          console.log(user)
-          this.setState({email: user.email, user: user.uid});
-        } else {
-          this.setState({email: null, user: null});
-        }
-      });
+  async componentWillMount() {
+    await Font.loadAsync({
+      'Roboto': require('native-base/Fonts/Roboto.ttf'),
+      'Roboto_medium': require('native-base/Fonts/Roboto_medium.ttf'),
+      'Ionicons': require("@expo/vector-icons/fonts/Ionicons.ttf")
+    });
+    this.setState({ isReady: true });
+  }
+
+  async componentDidMount(){
+    this.unsubscriber = firebase.auth().onAuthStateChanged((user) => {
+      if(user) {
+        this.setState({user});
+      } else {
+        this.setState({user: null});
+      }
+    });
   }
 
   componentWillUnmount() {
@@ -78,42 +89,69 @@ export default class App extends Component {
     }
   }
 
+  onSignoutPressed = () => {
+    firebase.auth().signOut();
+  }
+
   render() { 
     let view;
-    if(this.state.email){
-      view = <User email={this.state.email} user={this.state.uid}/>
+    if(this.state.user){
+      view = <User user={this.state.user}/>
     }else{
-      view = (<View style={{padding: 30}}>
-          <TextInput
-            style={{height: 40}}
-            placeholder="Email"
-            onChangeText={(inputEmail) => this.setState({inputEmail})}
-          />
-          <TextInput
-            secureTextEntry
-            style={{height: 40}}
-            placeholder="Password"
-            onChangeText={(inputPassword) => this.setState({inputPassword})}
-          />
+      view = (
+      <View style={styles.container}>
+        <Form>
+          <Item>
+            <Input 
+              placeholder="Email" 
+              autoComplete="email"
+              onChangeText={(inputEmail) => this.setState({inputEmail})}
+            />
+          </Item>
+          <Item last>
+            <Input 
+              secureTextEntry
+              placeholder="Password" 
+              onChangeText={(inputPassword) => this.setState({inputPassword})}/>
+          </Item>
+        </Form>
+
+        <View style={styles.buttonContainer}>
+          <Button
+            style={styles.button}
+            onPress= {this.login}
+            color="#841584">
+            <Text>Login</Text>
+          </Button>
 
           <Button
-          onPress= {this.login}
-          title="Login"
-          color="#841584"
-          />
-
-          <Button
-          onPress= {this.signUp}
-          title="Sign Up"
-          color="#841584"
-          />
-        </View>)
+            style={styles.button}
+            onPress= {this.signUp}
+            color="#841584">
+            <Text>Sign Up</Text>
+          </Button>
+        </View>
+      </View>
+      )
     }
 
     return (
-      <View style={styles.container}>
+      this.state.isReady ? 
+      <Container>
+        <Header>
+          <Left/>
+          <Body>
+            <Title>Smart Sort</Title>
+          </Body>
+          <Right>
+            {this.state.user ? (<Button transparent onPress={this.onSignoutPressed}>
+              <Icon name='exit' />
+            </Button>) : null}
+          </Right>
+        </Header>
         {view}
-      </View>
+      </Container>
+      : <Expo.AppLoading />
     );
   }
 }
@@ -121,9 +159,15 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     paddingTop: Constants.statusBarHeight,
-    backgroundColor: '#ecf0f1',
     padding: 8,
+  },
+  button: {
+    margin: 16
+  },
+  buttonContainer: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "center"
   }
 });

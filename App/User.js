@@ -1,6 +1,8 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, Button } from 'react-native';
+import { View, StyleSheet } from 'react-native';
+import { Container, Button, Text, Header, Left, Body, Right, Title, Form, Input, Item } from 'native-base';
 import { Constants } from 'expo';
+import { BarCodeScanner, Permissions } from 'expo';
 
 // You can import from local files
 import AssetExample from './components/AssetExample';
@@ -17,7 +19,6 @@ import firebase from "./firebase.js";
 
 export default class User extends React.Component {
   state = {
-    user: "daniel",
     points: 0,
     data: 
       {
@@ -30,11 +31,13 @@ export default class User extends React.Component {
       Compost:{},
       Recycling: {},
       Trash: {}
-    }
+    },
+    scanning: false,
+    hasCameraPermission: null
   }
 
-  componentDidMount() {
-    firebase.database().ref(this.state.user).on('value', (snapshot) => {
+  async componentDidMount() {
+    firebase.database().ref(this.props.user.uid).on('value', (snapshot) => {
       const numTrash = snapshot.child('Trash').numChildren()
       const numRecycle = snapshot.child('Recycling').numChildren()
       const numCompost = snapshot.child('Compost').numChildren()
@@ -52,15 +55,32 @@ export default class User extends React.Component {
         snapshot: snapshot.val(),
         points: 5*numRecycle + 2*numCompost + numTrash
       });
-      
     });
+
+    const { status } = await Permissions.askAsync(Permissions.CAMERA);
+    this.setState({ hasCameraPermission: status === 'granted' });
   }
 
-  onSignoutPressed = () => {
-    firebase.auth().signOut();
+  onScanPress = () => {
+    this.setState({scanning: true})
+  }
+
+  handleBarCodeScanned = () => {
+    // TODO: check bar code
+    firebase.database().ref('inProgress').set({status: 1, user: this.props.user.uid})
+    this.setState({scanning: false})
   }
 
   render() {
+    const { hasCameraPermission } = this.state;
+
+    if (hasCameraPermission === null) {
+      return <Text>Requesting for camera permission</Text>;
+    }
+    if (hasCameraPermission === false) {
+      return <Text>No access to camera</Text>;
+    }
+
     const screenWidth = Dimensions.get('window').width;
     const chartConfig = {
       backgroundGradientFrom: '#ffffff',
@@ -71,27 +91,32 @@ export default class User extends React.Component {
     };
     return (
       <View style={styles.container}>
-        <Button 
-          onPress={this.onSignoutPressed}
-          title="Sign out">
-        </Button>
-
-        <BarChart
-          style={{ marginVertical: 8, borderRadius: 16}}
-          data={this.state.data}
-          width={screenWidth-16}
-          height={220}
-          yAxisLabel={''}
-          chartConfig={chartConfig}
-        />
-        <Text style={styles.paragraph}>
-          Tap phone to gain points!
-        </Text>
-        <Card>
-          <Text style={styles.paragraph}>
+        {this.state.scanning ? (
+          hasCameraPermission == null ? <Text>Requesting camera permission</Text> : (
+            hasCameraPermission == false ? <Text>No access to camera</Text> : (
+              <BarCodeScanner
+                onBarCodeScanned={this.handleBarCodeScanned}
+                style={StyleSheet.absoluteFill}
+              />
+            )
+          )
+        ): (
+        <View>
+          <BarChart
+            style={{ marginVertical: 8, borderRadius: 16}}
+            data={this.state.data}
+            width={screenWidth-16}
+            height={220}
+            yAxisLabel={''}
+            chartConfig={chartConfig}
+          />
+          <Button style={styles.scanButton} onPress={this.onScanPress}><Text>Scan QR Code</Text></Button>
+          <Text style={styles.points}>
             {this.state.points} points
           </Text>
-        </Card>
+        </View>)
+      }
+        
       </View>
     );
   }
@@ -100,8 +125,8 @@ export default class User extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    backgroundColor: '#ecf0f1'
+    margin: 16,
+    alignItems: 'center'
   },
   paragraph: {
     margin: 24,
@@ -109,4 +134,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
+  points: {
+    textAlign: 'center',
+    margin: 24,
+    fontSize: 24
+  },
+  scanButton: {
+    alignSelf: 'center'
+  }
 });
