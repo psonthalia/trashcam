@@ -1,15 +1,16 @@
 {
-  "name": "Project",
-  "version": "0.0.1",
+  "name": "smart-sort",
+  "version": "0.0.0",
+  "description": "No description",
+  "author": null,
   "private": true,
-  "scripts": {
-    "start": "react-native start"
-  },
+  "main": "node_modules/expo/AppEntry.js",
   "dependencies": {
-    "core-js": "^3",
-    "react": "^16.8.3",
-    "react-native": "^0.59",
-    "react-native-svg": "^9.3.6",
-    "react-native-svg-charts": "^5.2.0"
+    "expo": "^32.0.0",
+    "react": "16.5.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
+    "firebase": "5.9.2",
+    "react-native-chart-kit": "2.4.0",
+    "react-native-paper": "2.2.8"
   }
 }
