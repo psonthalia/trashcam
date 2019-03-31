@@ -3,6 +3,7 @@ import { View, StyleSheet } from 'react-native';
 import { Container, Button, Text, Header, Left, Body, Right, Title, Form, Input, Item } from 'native-base';
 import { Constants } from 'expo';
 import { BarCodeScanner, Permissions } from 'expo';
+import Redeem from './Redeem.js';
 
 // You can import from local files
 import AssetExample from './components/AssetExample';
@@ -28,15 +29,6 @@ export default class User extends React.Component {
       Compost:{},
       Recycling: {},
       Trash: {}
-    },
-    scanning: false,
-    hasCameraPermission: null
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if(!prevProps.scanInitial && this.props.scanInitial){
-      alert("Scanned!")
-      this.handleBarCodeScanned();
     }
   }
 
@@ -60,47 +52,17 @@ export default class User extends React.Component {
         points: 5*numRecycle + 2*numCompost + numTrash
       });
     });
-
-    
-
-    const { status } = await Permissions.askAsync(Permissions.CAMERA);
-    this.setState({ hasCameraPermission: status === 'granted' });
   }
 
   onScanPress = () => {
-    this.setState({scanning: true})
+    this.props.navigate('scanner')
   }
 
-  handleBarCodeScanned = () => {
-    // TODO: check bar code
-    firebase.database().ref('inProgress').set({status: 1, user: this.props.user.uid})
-    this.unsub = firebase.database().ref("inProgress").on('value', (snapshot) => {
-      try{
-        let val = snapshot.val();
-        if(val.status === 0){
-          const label = val.imageTag
-          let points = label === "Recycling" ? "5" : (label === "Compost" ? 2 : 1)
-          alert(`Recognized item: ${val.imageLabel}, which goes in ${val.imageTag}. You earned ${points} points!`)
-          if(this.unsub)
-            this.unsub();
-        }
-      }catch(e){
-        //ignore
-      }
-    });
-    this.setState({scanning: false})
+  onRedeemPress = () => {
+    this.props.navigate('redeem')
   }
 
   render() {
-    const { hasCameraPermission } = this.state;
-
-    if (hasCameraPermission === null) {
-      return <Text>Requesting for camera permission</Text>;
-    }
-    if (hasCameraPermission === false) {
-      return <Text>No access to camera</Text>;
-    }
-
     const screenWidth = Dimensions.get('window').width;
     const chartConfig = {
       backgroundGradientFrom: '#ffffff',
@@ -109,34 +71,22 @@ export default class User extends React.Component {
       strokeWidth: 2, // optional, default 3,
       decimalPlaces: 0
     };
+
     return (
       <View style={styles.container}>
-        {this.state.scanning ? (
-          hasCameraPermission == null ? <Text>Requesting camera permission</Text> : (
-            hasCameraPermission == false ? <Text>No access to camera</Text> : (
-              <BarCodeScanner
-                onBarCodeScanned={this.handleBarCodeScanned}
-                style={StyleSheet.absoluteFill}
-              />
-            )
-          )
-        ): (
-        <View>
-          <BarChart
-            style={{ marginVertical: 8, borderRadius: 16}}
-            data={this.state.data}
-            width={screenWidth-16}
-            height={220}
-            yAxisLabel={''}
-            chartConfig={chartConfig}
-          />
-          <Button style={styles.scanButton} onPress={this.onScanPress}><Text>Scan QR Code</Text></Button>
-          <Text style={styles.points}>
-            {this.state.points} points
-          </Text>
-        </View>)
-      }
-        
+        <BarChart
+          style={{ marginVertical: 8, borderRadius: 16}}
+          data={this.state.data}
+          width={screenWidth-16}
+          height={220}
+          yAxisLabel={''}
+          chartConfig={chartConfig}
+        />
+        <Button style={styles.scanButton} onPress={this.onScanPress}><Text>Scan QR Code</Text></Button>
+        <Text style={styles.points}>
+          {this.state.points} points
+        </Text>
+        <Button style={styles.redeemButton} onPress={this.onRedeemPress}><Text>Redeem</Text></Button>
       </View>
     );
   }
@@ -160,6 +110,9 @@ const styles = StyleSheet.create({
     fontSize: 24
   },
   scanButton: {
+    alignSelf: 'center'
+  },
+  redeemButton: {
     alignSelf: 'center'
   }
 });

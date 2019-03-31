@@ -72,9 +72,11 @@ try:
 
 			response = client.label_detection(image=image)
 			labels = response.label_annotations
+			imageLabel = ""
+			imageTag = ""
 
 			recycling = ["plastic", "paper", "metal", "aluminum", "can", "bottle", "jar", "glass", "jug", "electronic", "device", "tech", "cardboard", "floor"]
-			composting = ["veg", "fruit", "food", "grain", "bread", "coffee", "tea"]
+			composting = ["veg", "fruit", "food", "grain", "bread", "coffee", "tea", "plant", "chili", "pepper", "flower"]
 
 			dumped = False
 			for label in labels:
@@ -86,6 +88,8 @@ try:
 							dumped = True
 							firebase.patch('/' + user + '/Recycling/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):label.description})
 							firebase.patch('/TestData/Recycling/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):label.description})
+							imageLabel = label.description
+							imageTag = "Recycling"
 							break
 				else:
 					break
@@ -99,6 +103,8 @@ try:
 								dumped = True
 								firebase.patch('/' + user + '/Compost/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):label.description})
 								firebase.patch('/TestData/Compost/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):label.description})
+								imageLabel = label.description
+								imageTag = "Compost"
 								break
 					else:
 						break
@@ -106,15 +112,17 @@ try:
 			if not dumped:
 				landfill()
 				dumped = True
+				imageTag = "Trash"
 				if len(labels) > 0:
 					firebase.patch('/' + user + '/Trash/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):labels[0].description})
 					firebase.patch('/TestData/Trash/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):labels[0].description})
-					itemAdded = labels[0].description
+					imageLabel = labels[0].description
 				else:
 					firebase.patch('/' + user + '/Trash/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):"Trash"})
 					firebase.patch('/TestData/Trash/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):"Trash"})
+					imageLabel = "Trash"
 
-			firebase.patch("/inProgress/", {"status": 0})
+			firebase.patch("/inProgress/", {"status": 0, "imageLabel":imageLabel, "imageTag":imageTag})
 
 		time.sleep(2)
 

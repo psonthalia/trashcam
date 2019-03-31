@@ -1,17 +1,28 @@
 import firebase from './firebase.js';
 import React, { Component } from 'react';
-import { TextInput, View, Alert, StyleSheet } from 'react-native';
+import { TextInput, View, Alert, StyleSheet, BackHandler } from 'react-native';
 import { Constants } from 'expo';
-import User from './User.js'
+
 import { Container, Button, Text, Header, Left, Body, Right, Title, Form, Input, Item, Icon} from 'native-base';
 
 import { Font, Linking } from 'expo';
+
+import User from './User.js'
+import Redeem from './Redeem';
+import BarcodeScanner from './BarcodeScanner'
 
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.unsubscriber = null;
-    this.state = {user: null, inputEmail: '', inputPassword: '', isReady: false, scanInitial: false};
+    this.state = {
+      user: null, 
+      inputEmail: '', 
+      inputPassword: '', 
+      isReady: false, 
+      scanInitial: false,
+      page: 'user'
+    };
   }
 
   login = () => {
@@ -74,6 +85,7 @@ export default class App extends Component {
   }
 
   async componentDidMount(){
+    BackHandler.addEventListener('hardwareBackPress', this.onBackPressed);
     this.unsubscriber = firebase.auth().onAuthStateChanged((user) => {
       if(user) {
         this.setState({user});
@@ -101,13 +113,34 @@ export default class App extends Component {
     firebase.auth().signOut();
   }
 
+  onBackPressed = () => {
+    if(this.state.user && this.state.page !== 'page') {
+      this.navigate('user')
+      return true
+    }
+  }
+
+  navigate = (page) => {
+    this.setState({page})
+  }
+
   render() { 
     let view;
     if(this.state.user){
-      view = <User user={this.state.user} scanInitial={this.state.scanInitial}/>
-    }else{
-      view = (
-      <View style={styles.container}>
+      switch(this.state.page){
+        case 'redeem':
+          view = <Redeem navigate={this.navigate}/>;
+          break;
+        case 'scanner':
+          view = <BarcodeScanner navigate={this.navigate} user={this.state.user} scanInitial={this.state.scanInitial}/>;
+          break;
+        case 'user':
+        default:
+          view = <User user={this.state.user} scanInitial={this.state.scanInitial} navigate={this.navigate}/>;
+          break;
+      }
+    } else {
+      view = (<View style={styles.container}>
         <Form>
           <Item>
             <Input 
@@ -139,22 +172,27 @@ export default class App extends Component {
             <Text>Sign Up</Text>
           </Button>
         </View>
-      </View>
-      )
+      </View>);
     }
 
     return (
       this.state.isReady ? 
       <Container>
         <Header>
-          <Left/>
+          <Left>
+            {this.state.user && this.state.page !== 'user' ? (
+                <Button transparent onPress={this.onBackPressed}>
+                  <Icon name='arrow-back' />
+                </Button>) : null}
+          </Left>
           <Body>
             <Title>Trash Cam</Title>
           </Body>
           <Right>
-            {this.state.user ? (<Button transparent onPress={this.onSignoutPressed}>
-              <Icon name='exit' />
-            </Button>) : null}
+            {this.state.user ? (
+                <Button transparent onPress={this.onSignoutPressed}>
+                  <Icon name='exit' />
+                </Button>) : null}
           </Right>
         </Header>
         {view}
