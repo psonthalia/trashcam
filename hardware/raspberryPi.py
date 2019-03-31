@@ -74,7 +74,7 @@ try:
 			labels = response.label_annotations
 
 			recycling = ["plastic", "paper", "metal", "aluminum", "can", "bottle", "jar", "glass", "jug", "electronic", "device", "tech", "cardboard", "floor"]
-			composting = ["veg", "fruit", "food", "grain", "bread", "coffee", "tea"]
+			composting = ["veg", "fruit", "food", "grain", "bread", "coffee", "tea", "plant", "chili", "pepper", "flower"]
 
 			dumped = False
 			for label in labels:
