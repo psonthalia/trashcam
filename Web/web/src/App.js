@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 import firebase from "./firebase.js";
 
 import {ResponsiveContainer, BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Bar} from 'recharts';
-
-const margin = {top: 20, right: 20, bottom: 30, left: 40};
 
 class App extends Component {
   constructor() {
@@ -20,8 +17,11 @@ class App extends Component {
         Recycling: {},
         Trash: {}
       },
-      width: 500
+      width: 500,
+      timeSpan: 'All Time',
     }
+
+    this.getTimespan = this.getTimespan.bind(this);
   }
 
   componentDidMount() {
@@ -33,23 +33,72 @@ class App extends Component {
 
     firebase.database().ref('TestData').on('value', (snapshot) => {
       this.setState({
-        data: [
-          {name: 'Bins',
-            Compost: snapshot.child('Compost').numChildren(),
-          Recycling: snapshot.child('Recycling').numChildren(),
-          Trash: snapshot.child('Trash').numChildren()}
-        ],
         snapshot: snapshot.val()
       });
+      this.getTimespan(null, snapshot.val())
     });
   }
+
+  getTimespan(event, snapshot) {
+    snapshot = snapshot ? snapshot : this.state.snapshot
+    let timeSpan = event ? event.target.value : this.state.timeSpan
+    var trash = 0;
+    var recycling = 0;
+    var compost = 0;
+
+    if (timeSpan === "All Time") {
+      trash = Object.keys(snapshot.Trash).length;
+      recycling = Object.keys(snapshot.Recycling).length;
+      compost = Object.keys(snapshot.Compost).length;
+    } else {
+      let threshold;
+      if (timeSpan === "Past Week") {
+        threshold = 7 * 24 * 3600 * 1000;
+      } else {  //Past Day
+        threshold = 24 * 3600 * 1000;
+      }
+      for (const key of Object.keys(snapshot.Trash)) {
+        const date = new Date(key);
+        if (Date.now() - date.getTime() < threshold) {
+          trash++;
+        }
+      }
+      for (const key of Object.keys(snapshot.Recycling)) {
+        const date = new Date(key);
+        if (Date.now() - date.getTime() < threshold) {
+          recycling++;
+        }
+      }
+      for (const key of Object.keys(snapshot.Compost)) {
+        const date = new Date(key);
+        if (Date.now() - date.getTime() < threshold) {
+          compost++;
+        }
+      }
+    }
+
+
+    this.setState({
+      timeSpan: timeSpan,
+      data: [
+        {name: 'Bins', Trash: trash, Recycling: recycling, Compost: compost}
+      ]
+    });
+  }
+
+  process
 
   render() {
 
     return (
       <div ref="root">
         <div className="toolbar">
-          Smart Sort
+          <div className="title">Smart Sort</div>
+          <select className="selectTime" value={this.state.timeSpan} onChange={this.getTimespan}>
+            <option value='Past Day'>Past Day</option>
+            <option value='Past Week'>Past Week</option>
+            <option value='All Time'>All Time</option>
+          </select>
         </div>
 
         <div className="content">
