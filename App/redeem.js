@@ -21,7 +21,7 @@ export default class Redeem extends React.Component {
               </Right>
             </CardItem>
             <CardItem cardBody>
-              <Image source={require('./mcdonalds.png')} style={{height: 200, width: null, flex: 1}}/>
+              <Image source={require('./assets/mcdonalds.png')} style={{height: 200, width: null, flex: 1}}/>
             </CardItem>
             <CardItem>
               <Body>
@@ -45,7 +45,7 @@ export default class Redeem extends React.Component {
               </Right>
             </CardItem>
             <CardItem cardBody>
-              <Image source={require('./chipotle.gif')} style={{height: 200, width: null, flex: 1}}/>
+              <Image source={require('./assets/chipotle.gif')} style={{height: 200, width: null, flex: 1}}/>
             </CardItem>
             <CardItem>
               <Body>
@@ -69,7 +69,7 @@ export default class Redeem extends React.Component {
               </Right>
             </CardItem>
             <CardItem cardBody>
-              <Image source={require('./taco-bell.jpg')} style={{height: 200, width: null, flex: 1}}/>
+              <Image source={require('./assets/taco-bell.jpg')} style={{height: 200, width: null, flex: 1}}/>
             </CardItem>
             <CardItem>
               <Body>
@@ -93,7 +93,7 @@ export default class Redeem extends React.Component {
               </Right>
             </CardItem>
             <CardItem cardBody>
-              <Image source={require('./subway.jpeg')} style={{height: 200, width: null, flex: 1}}/>
+              <Image source={require('./assets/subway.jpeg')} style={{height: 200, width: null, flex: 1}}/>
             </CardItem>
             <CardItem>
               <Body>

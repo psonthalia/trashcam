@@ -35,6 +35,9 @@ export default class User extends React.Component {
   }
 
   async componentDidMount() {
+    if(this.props.scanInitial) {
+      this.handleBarCodeScanned();
+    }
     const { status } = await Permissions.askAsync(Permissions.CAMERA);
     this.setState({ hasCameraPermission: status === 'granted' });
   }

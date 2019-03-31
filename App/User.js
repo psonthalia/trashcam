@@ -136,7 +136,7 @@ export default class User extends React.Component {
               {this.state.allPlayers.map((item, index) =>
                   <ListItem key={item[0]}>
                       <Left>
-                          <Text>{index.toString() + ". " + item[1].toString()}</Text>
+                          <Text>{(index+1).toString() + ". " + item[1].toString()}</Text>
                       </Left>
                       <Right>
                           <Text>{item[0].toString() + " Points"}</Text>

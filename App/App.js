@@ -8,7 +8,7 @@ import { Container, Button, Text, Header, Left, Body, Right, Title, Form, Input,
 import { Font, Linking } from 'expo';
 
 import User from './User.js'
-import Redeem from './Redeem';
+import Redeem from './redeem.js';
 import BarcodeScanner from './BarcodeScanner'
 
 export default class App extends Component {
@@ -89,17 +89,19 @@ export default class App extends Component {
     this.unsubscriber = firebase.auth().onAuthStateChanged((user) => {
       if(user) {
         this.setState({user});
+        const handleUrl = (url) => {
+          let { path, queryParams } = Expo.Linking.parse(url);
+          //alert(JSON.stringify(queryParams))
+          if(Object.keys(queryParams).length != 0){
+            this.setState({scanInitial: true})
+            this.navigate('scanner')
+          }
+        };
+        Linking.getInitialURL().then(handleUrl)
+        Linking.addEventListener('url', handleUrl)
       } else {
         this.setState({user: null});
       }
-
-      Linking.getInitialURL().then((url) => {
-        let { path, queryParams } = Expo.Linking.parse(url);
-        //alert(JSON.stringify(queryParams))
-        if(Object.keys(queryParams).length != 0){
-          this.setState({scanInitial: true})
-        }
-      })
     });
   }
 
@@ -122,6 +124,9 @@ export default class App extends Component {
 
   navigate = (page) => {
     this.setState({page})
+    if(page==='user'){
+      this.setState({scanInitial: false})
+    }
   }
 
   render() { 
@@ -136,7 +141,7 @@ export default class App extends Component {
           break;
         case 'user':
         default:
-          view = <User user={this.state.user} scanInitial={this.state.scanInitial} navigate={this.navigate}/>;
+          view = <User user={this.state.user} navigate={this.navigate}/>;
           break;
       }
     } else {
