@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, ScrollView} from 'react-native';
 import {
   Container,
   Button,
@@ -119,7 +119,7 @@ export default class User extends React.Component {
     };
 
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
           <BarChart
               style={{ marginVertical: 8, borderRadius: 16}}
               data={this.state.data}
@@ -149,7 +149,7 @@ export default class User extends React.Component {
               <Button style={styles.scanButton} onPress={this.onScanPress}><Text>Scan Barcode</Text></Button>
               <Button style={styles.scanButton} onPress={this.onRedeemPress}><Text>Redeem</Text></Button>
           </View>
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -157,7 +157,7 @@ export default class User extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    margin: 16,
+    padding: 16,
     alignItems: 'center'
   },
   paragraph: {
