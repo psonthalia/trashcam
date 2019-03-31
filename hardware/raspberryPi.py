@@ -86,9 +86,9 @@ try:
 						if i in label.description.lower():
 							recycle()
 							dumped = True
-							firebase.patch('/' + user + '/Recycling/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):label.description})
-							firebase.patch('/TestData/Recycling/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):label.description})
-							imageLabel = label.description
+							firebase.patch('/' + user + '/Recycling/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):labels[0].description})
+							firebase.patch('/TestData/Recycling/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):labels[0].description})
+							imageLabel = labels[0].description
 							imageTag = "Recycling"
 							break
 				else:
@@ -101,9 +101,9 @@ try:
 							if i in label.description.lower():
 								compost()
 								dumped = True
-								firebase.patch('/' + user + '/Compost/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):label.description})
-								firebase.patch('/TestData/Compost/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):label.description})
-								imageLabel = label.description
+								firebase.patch('/' + user + '/Compost/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):labels[0].description})
+								firebase.patch('/TestData/Compost/', {str(datetime.datetime.now().replace(microsecond=0).isoformat()):labels[0].description})
+								imageLabel = labels[0].description
 								imageTag = "Compost"
 								break
 					else:
