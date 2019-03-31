@@ -12,7 +12,9 @@
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
     "react-native-chart-kit": "2.4.0",
+    "react-native-openanything": "^0.0.6",
     "react-native-paper": "2.2.8",
+    "react-native-sms-linking": "^1.0.2",
     "react-native-table-component": "^1.2.0"
   }
 }

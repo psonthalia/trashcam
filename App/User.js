@@ -15,6 +15,7 @@ import {
   ListItem,
   List
 } from 'native-base';
+import sms from 'react-native-sms-linking'
 import { Constants } from 'expo';
 import { BarCodeScanner, Permissions } from 'expo';
 import Redeem from './redeem.js';
@@ -108,6 +109,10 @@ export default class User extends React.Component {
     this.props.navigate('redeem')
   }
 
+  onHelpPress = () => {
+    sms('2053015769').catch(console.error)
+  }
+
   render() {
     const screenWidth = Dimensions.get('window').width;
     const chartConfig = {
@@ -119,7 +124,7 @@ export default class User extends React.Component {
     };
 
     return (
-      <ScrollView style={styles.container}>
+      <View style={styles.container}>
           <BarChart
               style={{ marginVertical: 8, borderRadius: 16}}
               data={this.state.data}
@@ -149,7 +154,8 @@ export default class User extends React.Component {
               <Button style={styles.scanButton} onPress={this.onScanPress}><Text>Scan Barcode</Text></Button>
               <Button style={styles.scanButton} onPress={this.onRedeemPress}><Text>Redeem</Text></Button>
           </View>
-      </ScrollView>
+        <Button small info style={styles.helpButton} onPress={this.onHelpPress}><Text>Need Help?</Text></Button>
+      </View>
     );
   }
 }
@@ -187,5 +193,8 @@ const styles = StyleSheet.create({
   },
   list: {
     width: Dimensions.get('window').width - 20,
+  },
+  helpButton: {
+    alignSelf: 'center'
   }
 });
