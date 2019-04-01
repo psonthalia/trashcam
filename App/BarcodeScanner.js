@@ -70,7 +70,7 @@ export default class User extends React.Component {
               break;
           }
           console.log(val)
-          alert(`Recognized item: ${val.imageLabel}, sorted into ${val.imageTag}. You earned ${points} points!`)
+          alert(`Your item is sorted as ${val.imageTag}. You earned ${points} points!`)
           this.props.navigate("user");
         }
       }catch(e){

@@ -23,6 +23,7 @@ export default class App extends Component {
       scanInitial: false,
       page: 'user'
     };
+    console.disableYellowBox = true;
   }
 
   login = () => {
@@ -99,6 +100,7 @@ export default class App extends Component {
         };
         Linking.getInitialURL().then(handleUrl)
         Linking.addEventListener('url', handleUrl)
+        firebase.database().ref(user.uid).update({"name": user.email.substring(0, user.email.indexOf("@"))}).then();
       } else {
         this.setState({user: null});
       }

@@ -124,7 +124,7 @@ export default class User extends React.Component {
     };
 
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
           <BarChart
               style={{ marginVertical: 8, borderRadius: 16}}
               data={this.state.data}
@@ -140,12 +140,12 @@ export default class User extends React.Component {
           <List style={styles.list}>
               {this.state.allPlayers.map((item, index) =>
                   <ListItem key={item[0]}>
-                      <Left>
-                          <Text>{(index+1).toString() + ". " + item[1].toString()}</Text>
-                      </Left>
-                      <Right>
-                          <Text>{item[0].toString() + " Points"}</Text>
-                      </Right>
+                      <View style={styles.listitem}>
+                          {item[1] && item[0] ? (<>
+                            <Text>{(index+1).toString() + ". " + item[1].toString()}</Text>
+                            <Text>{item[0].toString() + " Pts"}</Text></>) : null}
+
+                      </View>
                   </ListItem>
               )}
           </List>
@@ -154,8 +154,8 @@ export default class User extends React.Component {
               <Button style={styles.scanButton} onPress={this.onScanPress}><Text>Scan Barcode</Text></Button>
               <Button style={styles.scanButton} onPress={this.onRedeemPress}><Text>Redeem</Text></Button>
           </View>
-        <Button small info style={styles.helpButton} onPress={this.onHelpPress}><Text>Need Help?</Text></Button>
-      </View>
+          <Button small info style={styles.helpButton} onPress={this.onHelpPress}><Text>Need Help?</Text></Button>
+      </ScrollView>
     );
   }
 }
@@ -163,8 +163,7 @@ export default class User extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
-    alignItems: 'center'
+    padding: 16
   },
   paragraph: {
     margin: 24,
@@ -195,6 +194,13 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width - 20,
   },
   helpButton: {
+    marginTop: 8,
+    marginBottom: 64,
     alignSelf: 'center'
+  },
+  listitem: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   }
 });
