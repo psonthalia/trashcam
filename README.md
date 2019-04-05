@@ -7,7 +7,7 @@ Based on personal experiences, we gathered that it’s not uncommon for a well e
 ## What it does
 TrashCam is a smart waste sorting system that saves both time and money. When presented with a normal trash can, people have to pause and make the choice between compost, recycling, and trash, often throwing it into the wrong bin. People at waste facilities then have to manually sort through the waste. With TrashCam, one simply throws the waste into a single smart waste disposal system, which then automatically puts the waste into the right container for the user. Not only is this convenient, it also removes the burden of having to sort waste offsite. TrashCam also includes a web application that shows statistics of what’s been thrown away in the past day, past week, etc. We also built a React Native mobile app that works on iOS and android. The app allows users of our devices to collect points and work up a leaderboard by using our product and tapping their phone our device. We use NFC technology to read the chip on our device and determine which user is throwing away garbage.
 
-## How I built it
+## How we built it
 We split the problem into parts - using computer vision to recognize the item, using a machine learning algorithm to classify the waste and the hardware which implements said classification.
 <ul>
 <li>Computer Vision: For the first part, we used a Raspberry Pi to click images of the trash item placed into the bin and ran it through the Google Cloud Vision API. The returned ‘tags’ were uploaded on Firebase.</li>
@@ -17,16 +17,16 @@ We split the problem into parts - using computer vision to recognize the item, u
 <li>Mobile App: We built our mobile app using React Native.</li>
 </ul>
 
-## Challenges I ran into
+## Challenges we ran into
 One of our main challenges was building our sorting system hardware. To sort waste into two bins, one simply needs a single flap to push the waste one way or the other. However, we wanted to sort into three bins, which required two servos. We went through many different designs, including a design with a sweeper and a flap. We finally settled on a design with two shifting ramps, one slightly higher than the other. As software engineers, we did not expect the engineering to be so tough to build.
 
-## Accomplishments that I'm proud of
+## Accomplishments that we're proud of
 <ol>
 <li>After many failed iterations, we successfully got our sorting system to work as per the result of our classification result. It took a couple of motors and hundreds of calibration tests for it to work properly.</li>
 <li>We couldn’t find a dataset classifying items into ‘Recycle’, ‘Compost’ and ‘Landfill’. We made our own algorithm to do that for us. It is in a prototype stage and works with a decent level of accuracy, but with minimal effort we are confident we could get it to work very accurately.</li>
 </ol>
 
-## What I learned
+## What we learned
 We learned that a viable hardware design is just as important as the software running under the hood. We realized that software is a deterministic system but hardware had many more uncontrollable factors and it needed much more effort than we expected. The unreliability of hardware tripped us up multiple times.
 
 ## What's next for TrashCam
