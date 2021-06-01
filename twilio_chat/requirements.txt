@@ -59,7 +59,7 @@ requests==2.21.0
 scipy==0.13.0b1
 six==1.4.1
 twilio==6.26.0
-urllib3==1.24.1
+urllib3==1.26.5
 virtualenv==16.4.3
 xattr==0.6.4
 zope.interface==4.1.1
